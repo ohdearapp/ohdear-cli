@@ -16,10 +16,18 @@ Oh Dear CLI was created by, and is maintained by [Nuno Maduro](https://github.co
 
 > **Requires [PHP 7.1.3+](https://php.net/releases/)**
 
-Require Oh Dear CLI using [Composer](https://getcomposer.org):
+Require Oh Dear CLI cloning this repository to any location on your system:
 
 ```bash
-??
+    git clone https://github.com/nunomaduro/ohdear-cli
+```
+
+clone this repository to any location on your system
+
+Configure the .env:
+
+```bash
+    cp .env.example .env
 ```
 
 ## Usage
