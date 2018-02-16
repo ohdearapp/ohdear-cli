@@ -22,7 +22,11 @@ Require Oh Dear CLI cloning this repository to any location on your system:
     git clone https://github.com/nunomaduro/ohdear-cli
 ```
 
-clone this repository to any location on your system
+Install the composer dependencies:
+
+```bash
+    cd ohdear-cli && composer install
+```
 
 Configure the .env:
 
@@ -33,7 +37,7 @@ Configure the .env:
 ## Usage
 
 ```bash
-./ohdear-cli
+php ohdear-cli
 ```
 
 ## Contributing
