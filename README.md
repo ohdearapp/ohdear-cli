@@ -22,6 +22,12 @@ Require Oh Dear CLI using [Composer](https://getcomposer.org):
 ??
 ```
 
+## Usage
+
+```bash
+./ohdear-cli
+```
+
 ## Contributing
 
 Thank you for considering to contribute to Oh Dear CLI. All the contribution guidelines are mentioned [here](CONTRIBUTING.md).
