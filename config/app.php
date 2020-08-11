@@ -36,7 +36,7 @@ return [
     | services your application utilizes. Should be true in production.
     |
     */
-    'production' => env('APP_PRODUCTION', true),
+    'env' => 'production',
 
     /*
     |--------------------------------------------------------------------------
@@ -50,7 +50,6 @@ return [
     */
     'providers' => [
         App\Providers\AppServiceProvider::class,
-        OhDear\ForgeSync\ForgeSyncServiceProvider::class,
     ],
 
 ];
