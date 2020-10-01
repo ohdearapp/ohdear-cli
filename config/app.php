@@ -36,7 +36,7 @@ return [
     | services your application utilizes. Should be true in production.
     |
     */
-    'env' => 'production',
+    'env' => env('APP_ENV', 'production'),
 
     /*
     |--------------------------------------------------------------------------
