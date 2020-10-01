@@ -14,7 +14,7 @@ Oh Dear CLI was created by, and is maintained by [Nuno Maduro](https://github.co
 
 ## Installation
 
-> **Requires [PHP 7.1.3+](https://php.net/releases/)**
+> **Requires [PHP 7.2.5+](https://php.net/releases/)**
 
 Require Oh Dear CLI cloning this repository to any location on your system:
 
@@ -28,7 +28,7 @@ Install the composer dependencies:
 cd ohdear-cli && composer install
 ```
 
-Configure the .env:
+Configure the `.env`:
 
 ```bash
 cp .env.example .env
@@ -39,6 +39,17 @@ cp .env.example .env
 ```bash
 php ohdear-cli
 ```
+
+**Available commands**
+
+- `ohdear-cli me`  
+   Display details about the currently authenticated user
+- `ohdear-cli sites:add [url]`  
+   Add a new site to Oh Dear
+- `ohdear-cli sites:list`  
+   Display a list of sites and their current status
+- `ohdear-cli sites:show [id]`  
+   Display details about a specific site
 
 ## Contributing
 
