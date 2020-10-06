@@ -15,8 +15,8 @@
         }
     ],
     "require": {
-        "php": ">=7.2.5",
-        "laravel-zero/framework": "^7.0",
+        "php": "^7.3",
+        "laravel-zero/framework": "^8.0",
         "ohdearapp/ohdear-php-sdk": "^3.0"
     },
     "require-dev": {
