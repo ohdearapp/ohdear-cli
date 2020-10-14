@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
                 throw new RuntimeException('Oh Dear API key not set');
             }
 
-            return new Ohdear($apiToken);
+            return new OhDear($apiToken);
         });
     }
 
