@@ -4,8 +4,8 @@
 
 <p align="center">
   <a href="https://styleci.io/repos/121807251"><img src="https://styleci.io/repos/121807251/shield" alt="StyleCI Status"/></a>
-  <a href="https://packagist.org/packages/nunomaduro/ohdear-cli"><img src="https://poser.pugx.org/nunomaduro/ohdear-cli/v/stable.svg" alt="Latest Stable Version"/></a>
-  <a href="https://packagist.org/packages/nunomaduro/ohdear-cli"><img src="https://poser.pugx.org/nunomaduro/ohdear-cli/license.svg" alt="License"/></a>
+  <a href="https://packagist.org/packages/nunomaduro/ohdear-cli"><img src="https://img.shields.io/packagist/v/nunomaduro/ohdear-cli.svg?style=flat-square&label=stable" alt="Latest Stable Version"/></a>
+  <a href="https://packagist.org/packages/nunomaduro/ohdear-cli"><img src="https://img.shields.io/packagist/l/nunomaduro/ohdear-cli.svg?style=flat-square" alt="License"/></a>
 </p>
 
 ## About Oh Dear CLI
