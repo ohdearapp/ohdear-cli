@@ -50,6 +50,10 @@ php ohdear-cli
    Display a list of sites and their current status
 - `ohdear-cli sites:show [id]`  
    Display details about a specific site
+- `ohdear-cli status-pages:list`  
+   Display a list of status pages and their current status
+- `ohdear-cli status-pages:show [id]`  
+   Display details about a specific status page
 
 ## Contributing
 
