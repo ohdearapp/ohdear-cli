@@ -72,7 +72,7 @@ return [
     | below a list of commands that you don't to see in your app.
     |
     */
-    
+
     'remove' => [
         // ..
     ],
