@@ -12,6 +12,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+
     'name' => 'Oh Dear',
 
     /*
@@ -24,6 +25,7 @@ return [
     | number MAJOR.MINOR.PATCH when an update happens: https://semver.org.
     |
     */
+
     'version' => app('git.version'),
 
     /*
@@ -33,9 +35,11 @@ return [
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
-    | services your application utilizes. Should be true in production.
+    | services the application utilizes. This can be overridden using
+    | the global command line "--env" option when calling commands.
     |
     */
+
     'env' => env('APP_ENV', 'production'),
 
     /*
@@ -48,6 +52,7 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+
     'providers' => [
         App\Providers\AppServiceProvider::class,
     ],

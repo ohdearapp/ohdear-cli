@@ -8,9 +8,6 @@ use RuntimeException;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         $this->app->singleton(OhDear::class, function () {
@@ -22,9 +19,6 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         //
