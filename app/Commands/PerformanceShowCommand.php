@@ -20,11 +20,11 @@ class PerformanceShowCommand extends Command
 
     public function handle(OhDear $ohDear)
     {
-        if (!$startDate = $this->argument('start-date')) {
+        if (! $startDate = $this->argument('start-date')) {
             $startDate = Carbon::yesterday()->format('Y-m-d');
         }
 
-        if (!$endDate = $this->argument('end-date')) {
+        if (! $endDate = $this->argument('end-date')) {
             $endDate = now()->format('Y-m-d');
         }
 
@@ -36,7 +36,7 @@ class PerformanceShowCommand extends Command
             return [
                 $performance['id'],
 
-                # All times converted from seconds to milliseconds
+                // All times converted from seconds to milliseconds
                 $performance['time_total'] * 1000,
                 $performance['time_namelookup'] * 1000,
                 $performance['time_remoteserver'] * 1000,
