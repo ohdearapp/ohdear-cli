@@ -16,7 +16,7 @@ Oh Dear CLI was created by, and is maintained by [Nuno Maduro](https://github.co
 
 > **Requires [PHP 7.3+](https://php.net/releases)**
 
-Require Oh Dear CLI cloning this repository to any location on your system:
+Require Oh Dear CLI by cloning this repository to any location on your system:
 
 ```bash
 git clone https://github.com/nunomaduro/ohdear-cli
@@ -33,6 +33,8 @@ Configure the `.env`:
 ```bash
 cp .env.example .env
 ```
+
+Then enter your Oh Dear API token in the `.env`, you can generate one from [the API access page](https://ohdear.app/user-settings/api).
 
 ## Usage
 
