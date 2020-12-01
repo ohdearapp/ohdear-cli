@@ -14,7 +14,7 @@ Oh Dear CLI was created by, and is maintained by [Nuno Maduro](https://github.co
 
 ## Installation
 
-> **Requires [PHP 7.3+](https://php.net/releases)**
+> **Requires [PHP 7.4+](https://php.net/releases)**
 
 Require Oh Dear CLI by cloning this repository to any location on your system:
 
