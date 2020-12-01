@@ -58,6 +58,16 @@ php ohdear-cli
    Display details about a specific status page
 - `ohdear-cli performance:show [id]`  
    Display performance details for a specific site
+- `ohdear-cli maintenance-period:add [site-id] [start-date] [end-date]`  
+   Add a new maintenance period for a site
+- `ohdear-cli maintenance-period:delete [id]`  
+   Delete a maintenance period
+- `ohdear-cli maintenance-period:show [id]`  
+   Display maintenance periods for a specific site
+- `ohdear-cli maintenance-period:start [site-id] [seconds]`  
+   Start a new maintenance period for a site
+- `ohdear-cli maintenance-period:stop [site-id]`  
+   Stop the currently active maintenance period for a site
 
 ## Contributing
 
