@@ -12,34 +12,22 @@
 
 Oh Dear CLI was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is an Oh Dear CLI tool written in PHP with Laravel Zero.
 
-## Installation
+## Install
 
 > **Requires [PHP 7.4+](https://php.net/releases)**
 
-Require Oh Dear CLI by cloning this repository to any location on your system:
+Via Composer
 
 ```bash
-git clone https://github.com/nunomaduro/ohdear-cli
+composer require nunomaduro/ohdear-cli
 ```
 
-Install the composer dependencies:
-
-```bash
-cd ohdear-cli && composer install
-```
-
-Configure the `.env`:
-
-```bash
-cp .env.example .env
-```
-
-Then enter your Oh Dear API token in the `.env`, you can generate one from [the API access page](https://ohdear.app/user-settings/api).
+Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user-settings/api).
 
 ## Usage
 
 ```bash
-php ohdear-cli
+ohdear-cli list
 ```
 
 **Available commands**
