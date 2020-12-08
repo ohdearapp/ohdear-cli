@@ -2,9 +2,9 @@
 
 namespace App\Commands;
 
-use OhDear\PhpSdk\OhDear;
 use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
+use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\MixedContentItem;
 
 class MixedContentShowCommand extends Command
