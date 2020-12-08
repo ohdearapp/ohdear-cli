@@ -68,6 +68,8 @@ php ohdear-cli
    Start a new maintenance period for a site
 - `ohdear-cli maintenance-period:stop [site-id]`  
    Stop the currently active maintenance period for a site
+- `ohdear-cli mixed-content:show [site-id]`  
+   Display mixed content for a specific site
 
 ## Contributing
 
