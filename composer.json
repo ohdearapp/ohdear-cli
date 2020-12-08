@@ -15,7 +15,9 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4"
+    },
+    "require-dev": {
         "laravel-zero/framework": "^8.0",
         "ohdearapp/ohdear-php-sdk": "^3.0.2"
     },
@@ -36,5 +38,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "bin": ["ohdear-cli"]
+    "bin": ["builds/ohdear-cli"]
 }
