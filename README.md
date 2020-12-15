@@ -58,6 +58,8 @@ ohdear-cli list
    Stop the currently active maintenance period for a site
 - `ohdear-cli mixed-content:show [site-id]`  
    Display mixed content for a specific site
+- `ohdear-cli broken-link:show [site-id]`  
+   Display broken links for a specific site
 
 ## Contributing
 
