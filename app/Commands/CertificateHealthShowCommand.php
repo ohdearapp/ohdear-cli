@@ -2,10 +2,8 @@
 
 namespace App\Commands;
 
-use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-use OhDear\PhpSdk\Resources\CertificateHealth;
 
 class CertificateHealthShowCommand extends Command
 {
@@ -22,25 +20,25 @@ class CertificateHealthShowCommand extends Command
         $certificateHealth = $ohDear->certificateHealth($this->argument('site-id'));
 
         $this->output->text([
-            "<options=bold,underscore>Certificate Details</>",
+            '<options=bold,underscore>Certificate Details</>',
             "<options=bold>Issuer:</> {$certificateHealth->certificateDetails['issuer']}",
             "<options=bold>Valid From:</> {$certificateHealth->certificateDetails['valid_from']}",
             "<options=bold>Valid Until:</> {$certificateHealth->certificateDetails['valid_until']}",
-            ""
+            '',
         ]);
 
         if ($this->option('checks')) {
-            $this->output->writeln(" <options=bold,underscore>Checks</>");
+            $this->output->writeln(' <options=bold,underscore>Checks</>');
 
             $this->output->listing(
                 collect($certificateHealth->certificateChecks)->map(function (array $check) {
-                    return "{$check['label']} (".($check['passed'] ? 'Passed' : 'Failed').")";
+                    return "{$check['label']} (".($check['passed'] ? 'Passed' : 'Failed').')';
                 })->toArray()
             );
         }
 
         if ($this->option('issuers')) {
-            $this->output->writeln(" <options=bold,underscore>Issuers</>");
+            $this->output->writeln(' <options=bold,underscore>Issuers</>');
 
             $this->output->listing($certificateHealth->certificateChainIssuers);
         }
