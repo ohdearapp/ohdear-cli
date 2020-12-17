@@ -60,6 +60,8 @@ ohdear-cli list
    Display mixed content for a specific site
 - `ohdear-cli broken-link:show [site-id]`  
    Display broken links for a specific site
+- `ohdear-cli certificate-health:show [site-id] [--checks] [--issuers]`  
+   Display certificate health for a specific site (use `--checks` or `--issuers` for additional information)
 
 ## Contributing
 
