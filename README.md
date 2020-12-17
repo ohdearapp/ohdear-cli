@@ -10,7 +10,7 @@
 
 ## About Oh Dear CLI
 
-Oh Dear CLI was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and is an Oh Dear CLI tool written in PHP with Laravel Zero.
+Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro), and is maintained by [Owen Voke](https://github.com/owenvoke) , and is an Oh Dear CLI tool written in PHP with Laravel Zero.
 
 ## Install
 
