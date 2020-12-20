@@ -62,6 +62,14 @@ ohdear-cli list
    Display broken links for a specific site
 - `ohdear-cli certificate-health:show [site-id] [--checks] [--issuers]`  
    Display certificate health for a specific site (use `--checks` or `--issuers` for additional information)
+- `ohdear-cli check:show [site-id]`  
+   Display checks for a specific site
+- `ohdear-cli check:enable [id]`  
+   Enable a specific check
+- `ohdear-cli check:disable [id]`  
+   Disable a specific check
+- `ohdear-cli check:request-run [id]`  
+   Request a new run for a specific check
 
 ## Contributing
 
