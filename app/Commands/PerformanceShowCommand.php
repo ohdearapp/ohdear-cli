@@ -3,11 +3,14 @@
 namespace App\Commands;
 
 use Carbon\Carbon;
-use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use App\Commands\Concerns\EnsureHasToken;
+use LaravelZero\Framework\Commands\Command;
 
 class PerformanceShowCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'performance:show {id : The id of the status page to view}
                                              {start-date? : The date to start at}
@@ -20,6 +23,10 @@ class PerformanceShowCommand extends Command
 
     public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         if (! $startDate = $this->argument('start-date')) {
             $startDate = Carbon::yesterday()->format('Y-m-d');
         }

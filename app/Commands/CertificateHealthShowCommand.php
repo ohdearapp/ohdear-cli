@@ -2,11 +2,14 @@
 
 namespace App\Commands;
 
+use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 
 class CertificateHealthShowCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'certificate-health:show {site-id : The id of the site to view certificate health for}
                                                     {--c|checks : Include a list of the certificate checks that were performed}
@@ -15,8 +18,12 @@ class CertificateHealthShowCommand extends Command
     /** @var string */
     protected $description = 'Display the certificate health for a site';
 
-    public function handle(OhDear $ohDear): void
+    public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         $certificateHealth = $ohDear->certificateHealth($this->argument('site-id'));
 
         $this->output->text([

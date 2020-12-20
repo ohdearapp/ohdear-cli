@@ -2,12 +2,15 @@
 
 namespace App\Commands;
 
-use Illuminate\Support\Collection;
-use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use Illuminate\Support\Collection;
+use App\Commands\Concerns\EnsureHasToken;
+use LaravelZero\Framework\Commands\Command;
 
 class StatusPagesListCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'status-pages:list';
 
@@ -16,6 +19,10 @@ class StatusPagesListCommand extends Command
 
     public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         $statusPageData = Collection::make($ohDear->statusPages())->map(static function ($statusPage) {
             return [
                 $statusPage->id,

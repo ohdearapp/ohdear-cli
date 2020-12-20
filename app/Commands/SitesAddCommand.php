@@ -2,11 +2,14 @@
 
 namespace App\Commands;
 
-use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use App\Commands\Concerns\EnsureHasToken;
+use LaravelZero\Framework\Commands\Command;
 
 class SitesAddCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'sites:add
                             {url : The url of the site that you want to add}
@@ -16,8 +19,12 @@ class SitesAddCommand extends Command
     /** @var string */
     protected $description = 'Add a new site to Oh Dear';
 
-    public function handle(OhDear $ohDear): void
+    public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         if (! ($url = $this->argument('url'))) {
             $this->warn('A valid URL must be provided');
 

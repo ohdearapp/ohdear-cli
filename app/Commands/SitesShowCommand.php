@@ -2,27 +2,34 @@
 
 namespace App\Commands;
 
-use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\Check;
+use App\Commands\Concerns\EnsureHasToken;
+use LaravelZero\Framework\Commands\Command;
 
 class SitesShowCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'sites:show {id : The id of the site to view}';
 
     /** @var string */
     protected $description = 'Display a single site and its current status';
 
-    public function handle(OhDear $ohDear): void
+    public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         $site = $ohDear->site($this->argument('id'));
 
         $uptimePercentage = $site->uptime(
-                now()->subDay()->format('YmdHis'),
-                now()->format('YmdHis'),
-                'day'
-            )[0]->uptimePercentage ?? 'unknown';
+            now()->subDay()->format('YmdHis'),
+            now()->format('YmdHis'),
+            'day'
+        )[0]->uptimePercentage ?? 'unknown';
 
         $this->output->text([
             "<options=bold>ID:</> {$site->id}",

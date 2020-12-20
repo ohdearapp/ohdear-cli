@@ -2,11 +2,14 @@
 
 namespace App\Commands;
 
-use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use App\Commands\Concerns\EnsureHasToken;
+use LaravelZero\Framework\Commands\Command;
 
 class MaintenancePeriodAddCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'maintenance-period:add
                             {site-id : The id of the site that you want to create a maintenance period for}
@@ -16,8 +19,12 @@ class MaintenancePeriodAddCommand extends Command
     /** @var string */
     protected $description = 'Add a new maintenance period for a site';
 
-    public function handle(OhDear $ohDear): void
+    public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         if (! $startDate = $this->argument('start-date')) {
             $this->warn('A valid start date must be provided');
 

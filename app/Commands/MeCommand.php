@@ -2,20 +2,27 @@
 
 namespace App\Commands;
 
-use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\Team;
+use App\Commands\Concerns\EnsureHasToken;
+use LaravelZero\Framework\Commands\Command;
 
 class MeCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'me';
 
     /** @var string */
     protected $description = 'Display information about the currently authenticated user';
 
-    public function handle(OhDear $ohDear): void
+    public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         $data = $ohDear->me();
 
         $this->output->text([

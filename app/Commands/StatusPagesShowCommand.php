@@ -2,11 +2,14 @@
 
 namespace App\Commands;
 
-use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use App\Commands\Concerns\EnsureHasToken;
+use LaravelZero\Framework\Commands\Command;
 
 class StatusPagesShowCommand extends Command
 {
+    use EnsureHasToken;
+
     /** @var string */
     protected $signature = 'status-pages:show {id : The id of the status page to view}';
 
@@ -15,6 +18,10 @@ class StatusPagesShowCommand extends Command
 
     public function handle(OhDear $ohDear)
     {
+        if (! $this->ensureHasToken()) {
+            return 1;
+        }
+
         $statusPage = $ohDear->statusPage($this->argument('id'));
 
         $this->output->text([
