@@ -19,7 +19,7 @@ Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro), and is 
 Via Composer
 
 ```bash
-composer require nunomaduro/ohdear-cli
+composer global require nunomaduro/ohdear-cli
 ```
 
 Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user-settings/api).
