@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.3.0] - 2020-12-21
+
+### Added
+- Add commands for managing checks ([#16](https://github.com/nunomaduro/ohdear-cli/pull/16))
+
+### Changed
+- Update the output message formatting when token is not set ([#14](https://github.com/nunomaduro/ohdear-cli/pull/14))
+
 ## [2.2.0] - 2020-12-17
 
 ### Added
