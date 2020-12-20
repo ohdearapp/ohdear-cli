@@ -37,7 +37,7 @@ class StatusPagesShowCommand extends Command
         $this->line(" <options=bold,underscore>Latest Updates</>\n");
 
         $this->output->listing(
-            collect($statusPage->updates)->take(5)->map(static function (array $update) {
+            collect($statusPage->attributes['updates'])->take(5)->map(static function (array $update) {
                 return "{$update['title']} ({$update['severity']}, {$update['time']})";
             })->toArray()
         );
