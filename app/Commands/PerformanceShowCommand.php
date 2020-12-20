@@ -2,10 +2,10 @@
 
 namespace App\Commands;
 
-use Carbon\Carbon;
-use OhDear\PhpSdk\OhDear;
 use App\Commands\Concerns\EnsureHasToken;
+use Carbon\Carbon;
 use LaravelZero\Framework\Commands\Command;
+use OhDear\PhpSdk\OhDear;
 
 class PerformanceShowCommand extends Command
 {

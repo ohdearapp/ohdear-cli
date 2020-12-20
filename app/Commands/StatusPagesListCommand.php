@@ -2,10 +2,10 @@
 
 namespace App\Commands;
 
-use OhDear\PhpSdk\OhDear;
-use Illuminate\Support\Collection;
 use App\Commands\Concerns\EnsureHasToken;
+use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
+use OhDear\PhpSdk\OhDear;
 
 class StatusPagesListCommand extends Command
 {

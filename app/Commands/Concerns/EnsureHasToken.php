@@ -13,6 +13,7 @@ trait EnsureHasToken
     {
         if (! $this->hasToken()) {
             $this->error('You have not configured your Oh Dear API token yet. Please set the `OHDEAR_API_TOKEN` environment variable first.');
+
             return false;
         }
 

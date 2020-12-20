@@ -2,9 +2,9 @@
 
 namespace App\Commands;
 
-use OhDear\PhpSdk\OhDear;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
+use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\MaintenancePeriod;
 
 class MaintenancePeriodShowCommand extends Command

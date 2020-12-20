@@ -2,11 +2,11 @@
 
 namespace App\Commands;
 
-use OhDear\PhpSdk\OhDear;
-use Illuminate\Support\Collection;
-use OhDear\PhpSdk\Resources\BrokenLink;
 use App\Commands\Concerns\EnsureHasToken;
+use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
+use OhDear\PhpSdk\OhDear;
+use OhDear\PhpSdk\Resources\BrokenLink;
 
 class BrokenLinkShowCommand extends Command
 {
