@@ -18,7 +18,7 @@ class CheckEnableCommand extends Command
 
     public function handle(OhDear $ohDear)
     {
-        if (!$this->ensureHasToken()) {
+        if (! $this->ensureHasToken()) {
             return 1;
         }
 
