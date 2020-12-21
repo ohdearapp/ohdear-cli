@@ -70,6 +70,8 @@ ohdear-cli list
    Disable a specific check
 - `ohdear-cli check:request-run [id]`  
    Request a new run for a specific check
+- `ohdear-cli uptime:show [site-id] [start-date?] [end-date?] [--limit=10] [--timeframe=hour]`  
+   Display the uptime for a specific site
 
 ## Contributing
 
