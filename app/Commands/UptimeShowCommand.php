@@ -41,9 +41,9 @@ class UptimeShowCommand extends Command
         $uptime = $ohDear->uptime($this->argument('site-id'), $startDate, $endDate, $timeframe);
 
         if (empty($uptime)) {
-           $this->line('Unable to find any uptime periods for the specified site');
+            $this->line('Unable to find any uptime periods for the specified site');
 
-           return;
+            return;
         }
 
         $this->output->listing(
