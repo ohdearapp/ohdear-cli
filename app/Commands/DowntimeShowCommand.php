@@ -38,9 +38,9 @@ class DowntimeShowCommand extends Command
         $downtime = $ohDear->downtime($this->argument('site-id'), $startDate, $endDate);
 
         if (empty($downtime)) {
-           $this->line('Unable to find any downtime periods for the specified site');
+            $this->line('Unable to find any downtime periods for the specified site');
 
-           return;
+            return;
         }
 
         $this->output->listing(
