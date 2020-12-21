@@ -40,6 +40,12 @@ class UptimeShowCommand extends Command
 
         $uptime = $ohDear->uptime($this->argument('site-id'), $startDate, $endDate, $timeframe);
 
+        if (empty($uptime)) {
+           $this->line('Unable to find any uptime periods for the specified site');
+
+           return;
+        }
+
         $this->output->listing(
             collect($uptime)->take((int) $this->option('limit'))->map(static function (Uptime $uptime) {
                 return "{$uptime->datetime} ({$uptime->uptimePercentage}%)";
