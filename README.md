@@ -72,6 +72,8 @@ ohdear-cli list
    Request a new run for a specific check
 - `ohdear-cli uptime:show [site-id] [start-date?] [end-date?] [--limit=10] [--timeframe=hour]`  
    Display the uptime for a specific site
+- `ohdear-cli downtime:show [site-id] [start-date?] [end-date?] [--limit=10]`  
+   Display the downtime for a specific site
 
 ## Contributing
 
