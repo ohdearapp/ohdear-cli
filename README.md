@@ -44,7 +44,7 @@ ohdear-cli list
    Display a list of status pages and their current status
 - `ohdear-cli status-pages:show [id]`  
    Display details about a specific status page
-- `ohdear-cli performance:show [id]`  
+- `ohdear-cli performance:show [id] [start-date?] [end-date?] [--limit=5] [--timeframe=1h]`  
    Display performance details for a specific site
 - `ohdear-cli maintenance-period:add [site-id] [start-date] [end-date]`  
    Add a new maintenance period for a site
