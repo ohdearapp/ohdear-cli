@@ -35,7 +35,7 @@ class PerformanceShowCommand extends Command
             $endDate = now()->format('Y-m-d');
         }
 
-        $timeframe = in_array($this->option('limit'), ['1h', '1m']) ? $this->option('limit') : '1h';
+        $timeframe = in_array($this->option('timeframe'), ['1h', '1m']) ? $this->option('timeframe') : '1h';
 
         $performances = $ohDear->performanceRecords($this->argument('id'), $startDate, $endDate, $timeframe);
 
