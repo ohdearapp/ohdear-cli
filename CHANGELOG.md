@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.4.0] - 2020-12-22
+
+### Added
+- Add support for PHP 8 ([#17](https://github.com/nunomaduro/ohdear-cli/pull/17))
+- Add command to show uptime ([#19](https://github.com/nunomaduro/ohdear-cli/pull/19))
+- Add command to show downtime ([#20](https://github.com/nunomaduro/ohdear-cli/pull/20))
+
+### Fixed
+- Resolve typo with performance command ([#18](https://github.com/nunomaduro/ohdear-cli/pull/18))
+
 ## [2.3.0] - 2020-12-21
 
 ### Added
