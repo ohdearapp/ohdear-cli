@@ -74,6 +74,8 @@ ohdear-cli list
    Display the uptime for a specific site
 - `ohdear-cli downtime:show [site-id] [start-date?] [end-date?] [--limit=10]`  
    Display the downtime for a specific site
+- `ohdear-cli cron-check:show [site-id]`  
+   Display the cron checks for a specific site
 
 ## Contributing
 
