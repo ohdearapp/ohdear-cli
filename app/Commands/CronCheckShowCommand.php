@@ -34,6 +34,7 @@ class CronCheckShowCommand extends Command
         $this->output->listing(
             collect($cronChecks)->map(static function (CronCheck $cronCheck) {
                 $schedule = $cronCheck->cronExpression ?? "every {$frequencyInMinutes} minutes";
+
                 return "{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})";
             })->toArray()
         );
