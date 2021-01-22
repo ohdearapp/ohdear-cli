@@ -76,6 +76,10 @@ ohdear-cli list
    Display the downtime for a specific site
 - `ohdear-cli cron-check:show [site-id]`  
    Display the cron checks for a specific site
+- `ohdear-cli cron-check:add [site-id] [name] [frequency-or-expression] [--grace-time=5] [--description=] [--timezone=UTC]`  
+   Add a new cron check for a site
+- `ohdear-cli cron-check:delete [id]`  
+   Delete a cron check
 
 ## Contributing
 
