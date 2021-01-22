@@ -38,7 +38,7 @@ class CronCheckAddCommand extends Command
             $ohDear->createSimpleCronCheck(
                 $this->argument('site-id'),
                 $name,
-                $this->argument('frequency-or-expression'),
+                (int) $this->argument('frequency-or-expression'),
                 (int) $this->option('grace-time'),
                 $this->option('description'),
             ) :
@@ -51,8 +51,8 @@ class CronCheckAddCommand extends Command
                 $this->option('timezone')
             );
 
-        $schedule = $cronCheck->cronExpression ?? "every {$cronCheck->frequencyInMinutes} minutes";
+        $schedule = $cronCheck->cronExpression ?: "every {$cronCheck->frequencyInMinutes} minutes";
 
-        return "{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})";
+        $this->line("{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})");
     }
 }
