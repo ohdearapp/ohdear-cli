@@ -19,7 +19,7 @@
     },
     "require-dev": {
         "laravel-zero/framework": "^8.4",
-        "ohdearapp/ohdear-php-sdk": "^3.0.2"
+        "ohdearapp/ohdear-php-sdk": "^3.1"
     },
     "autoload": {
         "psr-4": {
