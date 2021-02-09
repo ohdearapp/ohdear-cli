@@ -14,7 +14,7 @@ class SitesAddCommand extends Command
     protected $signature = 'sites:add
                             {url : The url of the site that you want to add}
                             {--t|team= : The id of the team that the site should be added to}
-                            {--c|checks=* : The list of checks that should be used, defaults to all checks';
+                            {--c|checks=* : The list of checks that should be used, defaults to all checks}';
 
     /** @var string */
     protected $description = 'Add a new site to Oh Dear';
@@ -44,9 +44,10 @@ class SitesAddCommand extends Command
             'team_id' => $teamId,
         ], $checks));
 
-        $this->table(['ID', 'URL', 'Status Summary', 'Last Checked'], [
-            $site->id,
-            $site->url,
+        $this->output->text([
+            '<options=bold,underscore>Site Details</>',
+            "<options=bold>ID:</> {$site->id}",
+            "<options=bold>URL:</> {$site->url}",
         ]);
     }
 }

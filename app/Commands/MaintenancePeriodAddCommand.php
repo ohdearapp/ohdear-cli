@@ -39,11 +39,12 @@ class MaintenancePeriodAddCommand extends Command
 
         $maintenancePeriod = $ohDear->createSiteMaintenance($this->argument('id'), $startDate, $endDate);
 
-        $this->table(['ID', 'Site ID', 'Starts At', 'Ends At'], [
-            $maintenancePeriod->id,
-            $maintenancePeriod->siteId,
-            $maintenancePeriod->startsAt,
-            $maintenancePeriod->endsAt,
+        $this->output->text([
+            '<options=bold,underscore>Maintenance Period Details</>',
+            "<options=bold>ID:</> {$maintenancePeriod->id}",
+            "<options=bold>Site ID:</> {$maintenancePeriod->siteId}",
+            "<options=bold>Starts At:</> {$maintenancePeriod->startsAt}",
+            "<options=bold>Ends At:</> {$maintenancePeriod->endsAt}",
         ]);
     }
 }
