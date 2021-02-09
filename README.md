@@ -80,6 +80,12 @@ ohdear-cli list
    Add a new cron check for a site
 - `ohdear-cli cron-check:delete [id]`  
    Delete a cron check
+- `ohdear-cli status-page-updates:add [status-page-id] [title] [text] [--severity=info] [--pinned] [--time=]`  
+   Add a new update for a status page
+- `ohdear-cli status-page-updates:list [status-page-id]`  
+   Display updates for a status page
+- `ohdear-cli status-page-updates:delete [id]`  
+   Delete a status page update
 
 ## Contributing
 
