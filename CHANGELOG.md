@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.7.0] - 2021-02-12
+
+### Added
+- Add commands for managing status page updates ([#23](https://github.com/nunomaduro/ohdear-cli/pull/23))
+
 ## [2.6.0] - 2021-01-22
 
 ### Added
