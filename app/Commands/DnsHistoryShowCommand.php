@@ -6,7 +6,6 @@ use App\Commands\Concerns\EnsureHasToken;
 use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-use OhDear\PhpSdk\Resources\DnsHistoryItem;
 
 class DnsHistoryShowCommand extends Command
 {
@@ -64,7 +63,7 @@ class DnsHistoryShowCommand extends Command
 
     private function formatDnsType(array $dnsRecord)
     {
-        return match($dnsRecord['type']) {
+        return match ($dnsRecord['type']) {
             'A' => "{$dnsRecord['type']} / {$dnsRecord['ip']}",
             'AAAA' => "{$dnsRecord['type']} / {$dnsRecord['ipv6']}",
             'MX' => "{$dnsRecord['type']} / {$dnsRecord['target']} / {$dnsRecord['pri']},",
