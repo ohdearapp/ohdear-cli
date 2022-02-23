@@ -15,10 +15,10 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^8.0"
     },
     "require-dev": {
-        "laravel-zero/framework": "^8.10",
+        "laravel-zero/framework": "^9.0",
         "ohdearapp/ohdear-php-sdk": "^3.3"
     },
     "autoload": {
