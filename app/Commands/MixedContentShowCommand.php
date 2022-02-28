@@ -25,7 +25,7 @@ class MixedContentShowCommand extends Command
         }
 
         $mixedContentList = collect($ohDear->mixedContent($this->argument('site-id')))
-            ->mapToGroups(fn(MixedContentItem $mixedContent) => [$mixedContent->foundOnUrl => $mixedContent]);
+            ->mapToGroups(fn (MixedContentItem $mixedContent) => [$mixedContent->foundOnUrl => $mixedContent]);
 
         render(view('mixed-content-show', ['mixedContentList' => $mixedContentList]));
     }
