@@ -22,7 +22,7 @@ Via Composer
 composer global require ohdearapp/ohdear-cli
 ```
 
-Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user-settings/api).
+Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user/api-tokens).
 
 ## Usage
 
