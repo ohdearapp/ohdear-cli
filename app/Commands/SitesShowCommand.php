@@ -5,7 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-use OhDear\PhpSdk\Resources\Check;
+use function Termwind\render;
 
 class SitesShowCommand extends Command
 {
@@ -31,21 +31,6 @@ class SitesShowCommand extends Command
             'day'
         )[0]->uptimePercentage ?? 'unknown';
 
-        $this->output->text([
-            "<options=bold>ID:</> {$site->id}",
-            "<options=bold>URL:</> {$site->url}",
-            "<options=bold>Status Summary:</> {$site->attributes['summarized_check_result']}",
-            "<options=bold>Last run at:</> {$site->attributes['latest_run_date']}",
-            "<options=bold>Uptime in last 24hrs:</> {$uptimePercentage}%",
-            '',
-        ]);
-
-        $this->line(" <options=bold,underscore>Checks</>\n");
-
-        $this->output->listing(
-            collect($site->checks)->map(static function (Check $check) {
-                return "{$check->label} (".($check->enabled ? 'Enabled' : 'Disabled').')';
-            })->toArray()
-        );
+        render(view('sites-show', compact('site', 'uptimePercentage')));
     }
 }
