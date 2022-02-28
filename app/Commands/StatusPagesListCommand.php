@@ -3,9 +3,9 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\EnsureHasToken;
-use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class StatusPagesListCommand extends Command
 {
@@ -23,17 +23,6 @@ class StatusPagesListCommand extends Command
             return 1;
         }
 
-        $statusPageData = Collection::make($ohDear->statusPages())->map(static function ($statusPage) {
-            return [
-                $statusPage->id,
-                $statusPage->title,
-                $statusPage->attributes['summarized_status'],
-                implode(',', collect($statusPage->attributes['sites'])->map(function (array $site) {
-                    return $site['sort_url'];
-                })->toArray()),
-            ];
-        });
-
-        $this->table(['ID', 'Name', 'Status Summary', 'Sites'], $statusPageData);
+        render(view('status-pages-list', ['statusPages' => $ohDear->statusPages()]));
     }
 }
