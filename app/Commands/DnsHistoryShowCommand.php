@@ -25,7 +25,7 @@ class DnsHistoryShowCommand extends Command
         }
 
         render(view('dns-history-show', [
-            'dnsHistoryItem' => $ohDear->dnsHistoryItem($this->argument('site-id'), $this->argument('id'))
+            'dnsHistoryItem' => $ohDear->dnsHistoryItem($this->argument('site-id'), $this->argument('id')),
         ]));
     }
 }
