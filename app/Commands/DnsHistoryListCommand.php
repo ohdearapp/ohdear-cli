@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\DnsHistoryItem;
+use function Termwind\render;
 
 class DnsHistoryListCommand extends Command
 {
@@ -24,14 +25,6 @@ class DnsHistoryListCommand extends Command
             return 1;
         }
 
-        $dnsHistoryItems = Collection::make($ohDear->dnsHistoryItems($this->argument('site-id')))->map(static function (DnsHistoryItem $dnsHistoryItem) {
-            return [
-                $dnsHistoryItem->id,
-                $dnsHistoryItem->diffSummary,
-                $dnsHistoryItem->createdAt,
-            ];
-        });
-
-        $this->table(['ID', 'Difference Summary', 'Created'], $dnsHistoryItems);
+        render(view('dns-history-list', ['dnsHistoryItems' => $ohDear->dnsHistoryItems($this->argument('site-id'))]));
     }
 }
