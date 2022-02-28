@@ -1,5 +1,5 @@
 {
-    "name": "nunomaduro/ohdear-cli",
+    "name": "ohdearapp/ohdear-cli",
     "description": "An Oh Dear CLI tool written in PHP with Laravel Zero.",
     "keywords": ["framework", "laravel", "console", "zero", "cli", "oh dear", "ohdear"],
     "type": "project",
