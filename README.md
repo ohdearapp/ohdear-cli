@@ -4,8 +4,8 @@
 
 <p align="center">
   <a href="https://styleci.io/repos/121807251"><img src="https://styleci.io/repos/121807251/shield" alt="StyleCI Status"/></a>
-  <a href="https://packagist.org/packages/nunomaduro/ohdear-cli"><img src="https://img.shields.io/packagist/v/nunomaduro/ohdear-cli.svg?style=flat-square&label=stable" alt="Latest Stable Version"/></a>
-  <a href="https://packagist.org/packages/nunomaduro/ohdear-cli"><img src="https://img.shields.io/packagist/l/nunomaduro/ohdear-cli.svg?style=flat-square" alt="License"/></a>
+  <a href="https://packagist.org/packages/ohdearapp/ohdear-cli"><img src="https://img.shields.io/packagist/v/ohdearapp/ohdear-cli.svg?style=flat-square&label=stable" alt="Latest Stable Version"/></a>
+  <a href="https://packagist.org/packages/ohdearapp/ohdear-cli"><img src="https://img.shields.io/packagist/l/ohdearapp/ohdear-cli.svg?style=flat-square" alt="License"/></a>
 </p>
 
 ## About Oh Dear CLI
@@ -19,7 +19,7 @@ Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro), is main
 Via Composer
 
 ```bash
-composer global require nunomaduro/ohdear-cli
+composer global require ohdearapp/ohdear-cli
 ```
 
 Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user-settings/api).
