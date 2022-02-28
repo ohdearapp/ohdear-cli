@@ -21,7 +21,7 @@
             </tr>
         @empty
             <tr>
-                <td>No DNS history items were found for the authenticated user.</td>
+                <td colspan="3">No DNS history items were found for the authenticated user.</td>
             </tr>
         @endforelse
     </table>

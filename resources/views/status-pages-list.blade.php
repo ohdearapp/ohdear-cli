@@ -25,7 +25,7 @@
             </tr>
         @empty
             <tr>
-                <td>No sites were found for the authenticated user.</td>
+                <td colspan="4">No sites were found for the authenticated user.</td>
             </tr>
         @endforelse
     </table>
