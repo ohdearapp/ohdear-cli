@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class StatusPagesShowCommand extends Command
 {
@@ -22,31 +23,6 @@ class StatusPagesShowCommand extends Command
             return 1;
         }
 
-        $statusPage = $ohDear->statusPage($this->argument('id'));
-
-        $this->output->text([
-            "<options=bold>ID:</> {$statusPage->id}",
-            "<options=bold>Title:</> {$statusPage->title}",
-            "<options=bold>URL:</> {$statusPage->fullUrl}",
-            "<options=bold>Timezone:</> {$statusPage->timezone}",
-            "<options=bold>Status Summary:</> {$statusPage->summarizedStatus}",
-            '',
-        ]);
-
-        $this->line(" <options=bold,underscore>Sites</>\n");
-
-        $this->output->listing(
-            collect($statusPage->attributes['sites'])->map(function (array $site) {
-                return $site['sort_url'];
-            })->toArray()
-        );
-
-        $this->line(" <options=bold,underscore>Latest Updates</>\n");
-
-        $this->output->listing(
-            collect($statusPage->attributes['updates'])->take(5)->map(static function (array $update) {
-                return "{$update['title']} ({$update['severity']}, {$update['time']})";
-            })->toArray()
-        );
+        render(view('status-pages-show', ['statusPage' => $ohDear->statusPage($this->argument('id'))]));
     }
 }
