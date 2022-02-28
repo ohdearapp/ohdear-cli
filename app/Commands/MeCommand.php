@@ -6,6 +6,7 @@ use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\Team;
+use function Termwind\render;
 
 class MeCommand extends Command
 {
@@ -23,21 +24,6 @@ class MeCommand extends Command
             return 1;
         }
 
-        $data = $ohDear->me();
-
-        $this->output->text([
-            "<options=bold>ID:</> {$data->id}",
-            "<options=bold>Name:</> {$data->name}",
-            "<options=bold>Email:</> {$data->email}",
-            '',
-        ]);
-
-        $this->line(" <options=bold,underscore>Teams</>\n");
-
-        $this->output->listing(
-            collect($data->teams)->map(static function (Team $team) {
-                return "{$team->id} ({$team->name})";
-            })->toArray()
-        );
+        render(view('me', ['user' => $ohDear->me()]));
     }
 }
