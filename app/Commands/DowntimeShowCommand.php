@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\Downtime;
+use function Termwind\render;
 
 class DowntimeShowCommand extends Command
 {
@@ -35,18 +36,9 @@ class DowntimeShowCommand extends Command
             $endDate = now()->format('YmdHis');
         }
 
-        $downtime = $ohDear->downtime($this->argument('site-id'), $startDate, $endDate);
+        $downtime = collect($ohDear->downtime($this->argument('site-id'), $startDate, $endDate))
+            ->take((int) $this->option('limit'));
 
-        if (empty($downtime)) {
-            $this->line('Unable to find any downtime periods for the specified site');
-
-            return;
-        }
-
-        $this->output->listing(
-            collect($downtime)->take((int) $this->option('limit'))->map(static function (Downtime $downtime) {
-                return "{$downtime->startedAt} to {$downtime->endedAt}";
-            })->toArray()
-        );
+        render(view('downtime-show', ['downtime' => $downtime]));
     }
 }
