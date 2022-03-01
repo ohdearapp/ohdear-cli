@@ -6,6 +6,7 @@ use App\Commands\Concerns\EnsureHasToken;
 use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class StatusPageUpdatesListCommand extends Command
 {
@@ -23,17 +24,6 @@ class StatusPageUpdatesListCommand extends Command
             return 1;
         }
 
-        $statusPageUpdateData = Collection::make($ohDear->statusPageUpdates($this->argument('status-page-id')))->map(static function ($statusPageUpdate) {
-            return [
-                $statusPageUpdate->id,
-                $statusPageUpdate->title,
-                $statusPageUpdate->severity,
-                $statusPageUpdate->text,
-                $statusPageUpdate->pinned ? 'yes' : 'no',
-                $statusPageUpdate->time,
-            ];
-        });
-
-        $this->table(['ID', 'Title', 'Severity', 'Text', 'Pinned', 'Time'], $statusPageUpdateData);
+        render(view('status-page-updates-list', ['statusPageUpdates' => $ohDear->statusPageUpdates($this->argument('status-page-id'))]));
     }
 }
