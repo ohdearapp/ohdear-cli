@@ -5,7 +5,6 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-use OhDear\PhpSdk\Resources\Check;
 use function Termwind\render;
 
 class CheckShowCommand extends Command

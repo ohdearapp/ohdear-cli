@@ -26,7 +26,7 @@ class CheckDisableCommand extends Command
         $ohDear->disableCheck($this->argument('id'));
 
         render(view('notice', [
-            'notice' => "Disabled the check with id {$this->argument('id')}"
+            'notice' => "Disabled the check with id {$this->argument('id')}",
         ]));
     }
 }

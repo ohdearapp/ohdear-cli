@@ -27,7 +27,7 @@ class MaintenancePeriodDeleteCommand extends Command
         $ohDear->deleteSiteMaintenance($this->argument('id'));
 
         render(view('notice', [
-            'notice' => "Removed the maintenance period with id {$this->argument('id')}"
+            'notice' => "Removed the maintenance period with id {$this->argument('id')}",
         ]));
     }
 }

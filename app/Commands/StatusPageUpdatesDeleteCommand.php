@@ -27,7 +27,7 @@ class StatusPageUpdatesDeleteCommand extends Command
         $ohDear->deleteStatusPageUpdate($this->argument('id'));
 
         render(view('notice', [
-            'notice' => "Removed the status page update with id {$this->argument('id')}"
+            'notice' => "Removed the status page update with id {$this->argument('id')}",
         ]));
     }
 }

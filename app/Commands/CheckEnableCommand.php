@@ -26,7 +26,7 @@ class CheckEnableCommand extends Command
         $ohDear->enableCheck($this->argument('id'));
 
         render(view('notice', [
-            'notice' => "Enabled the check with id {$this->argument('id')}"
+            'notice' => "Enabled the check with id {$this->argument('id')}",
         ]));
     }
 }
