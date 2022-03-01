@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class CheckDisableCommand extends Command
 {
@@ -24,6 +25,8 @@ class CheckDisableCommand extends Command
 
         $ohDear->disableCheck($this->argument('id'));
 
-        $this->info("Disabled the check with id {$this->argument('id')}");
+        render(view('notice', [
+            'notice' => "Disabled the check with id {$this->argument('id')}"
+        ]));
     }
 }

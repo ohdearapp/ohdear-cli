@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class CheckRequestRunCommand extends Command
 {
@@ -24,6 +25,8 @@ class CheckRequestRunCommand extends Command
 
         $ohDear->requestRun($this->argument('id'));
 
-        $this->info("Requested a run for the check with id {$this->argument('id')}");
+        render(view('notice', [
+            'notice' => "Requested a run for the check with id {$this->argument('id')}"
+        ]));
     }
 }
