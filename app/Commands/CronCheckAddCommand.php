@@ -55,9 +55,7 @@ class CronCheckAddCommand extends Command
         $schedule = $cronCheck->cronExpression ?: "every {$cronCheck->frequencyInMinutes} minutes";
 
         render(view('notice', [
-            'notice' => "Requested a run for the check with id {$this->argument('id')}",
+            'notice' => "{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})",
         ]));
-
-        $this->line("{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})");
     }
 }

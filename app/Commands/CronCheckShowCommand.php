@@ -6,6 +6,7 @@ use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\CronCheck;
+use function Termwind\render;
 
 class CronCheckShowCommand extends Command
 {
@@ -23,20 +24,6 @@ class CronCheckShowCommand extends Command
             return 1;
         }
 
-        $cronChecks = $ohDear->cronChecks($this->argument('site-id'));
-
-        if (empty($cronChecks)) {
-            $this->line('Unable to find any cron checks for the specified site');
-
-            return;
-        }
-
-        $this->output->listing(
-            collect($cronChecks)->map(static function (CronCheck $cronCheck) {
-                $schedule = $cronCheck->cronExpression ?: "every {$cronCheck->frequencyInMinutes} minutes";
-
-                return "{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})";
-            })->toArray()
-        );
+        render(view('cron-check-show', ['cronChecks' => $ohDear->cronChecks($this->argument('site-id'))]));
     }
 }
