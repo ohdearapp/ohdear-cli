@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class StatusPageUpdatesAddCommand extends Command
 {
@@ -43,14 +44,8 @@ class StatusPageUpdatesAddCommand extends Command
             'time' => $this->option('time') ?? now()->format('Y-m-d H:i'),
         ]);
 
-        $this->output->text([
-            '<options=bold,underscore>Status Page Update Details</>',
-            "<options=bold>ID:</> {$statusPageUpdate->id}",
-            "<options=bold>Title:</> {$statusPageUpdate->title}",
-            "<options=bold>Severity:</> {$statusPageUpdate->severity}",
-            "<options=bold>Time:</> {$statusPageUpdate->time}",
-            '<options=bold>Pinned:</> '.($statusPageUpdate->pinned ? 'yes' : 'no'),
-            "<options=bold>Text:</> {$statusPageUpdate->text}",
-        ]);
+        render(view('notice', ['notice' => "Created a new status page update with id {$statusPageUpdate->id}"]));
+
+        render(view('status-page-updates-list', ['statusPageUpdates' => [$statusPageUpdate]]));
     }
 }
