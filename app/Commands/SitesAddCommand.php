@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class SitesAddCommand extends Command
 {
@@ -44,10 +45,8 @@ class SitesAddCommand extends Command
             'team_id' => $teamId,
         ], $checks));
 
-        $this->output->text([
-            '<options=bold,underscore>Site Details</>',
-            "<options=bold>ID:</> {$site->id}",
-            "<options=bold>URL:</> {$site->url}",
-        ]);
+        render(view('notice', ['notice' => "Created a new site with id {$site->id}"]));
+
+        render(view('sites-show', ['site' => $site, 'uptimePercentage' => 'N/A']));
     }
 }
