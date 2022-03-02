@@ -24,7 +24,7 @@ class MaintenancePeriodShowCommand extends Command
         }
 
         render(view('maintenance-period-show', [
-            'maintenancePeriods' => $ohDear->maintenancePeriods($this->argument('site-id'))
+            'maintenancePeriods' => $ohDear->maintenancePeriods($this->argument('site-id')),
         ]));
     }
 }
