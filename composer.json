@@ -19,9 +19,9 @@
     },
     "require-dev": {
         "illuminate/view": "^9.2",
-        "laravel-zero/framework": "^9.0",
+        "laravel-zero/framework": "^9.1.1",
         "nunomaduro/termwind": "^1.6",
-        "ohdearapp/ohdear-php-sdk": "^3.3"
+        "ohdearapp/ohdear-php-sdk": "^3.4.1"
     },
     "autoload": {
         "psr-4": {
