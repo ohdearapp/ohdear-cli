@@ -5,7 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-use OhDear\PhpSdk\Resources\MaintenancePeriod;
+use function Termwind\render;
 
 class MaintenancePeriodShowCommand extends Command
 {
@@ -23,18 +23,8 @@ class MaintenancePeriodShowCommand extends Command
             return 1;
         }
 
-        $maintenancePeriods = $ohDear->maintenancePeriods($this->argument('site-id'));
-
-        if (empty($maintenancePeriods)) {
-            $this->line('Unable to find any maintenance periods for the specified site');
-
-            return;
-        }
-
-        $this->output->listing(
-            collect($maintenancePeriods)->map(static function (MaintenancePeriod $maintenancePeriod) {
-                return "{$maintenancePeriod->id} (site: {$maintenancePeriod->siteId}) ({$maintenancePeriod->startsAt} to {$maintenancePeriod->endsAt})";
-            })->toArray()
-        );
+        render(view('maintenance-period-show', [
+            'maintenancePeriods' => $ohDear->maintenancePeriods($this->argument('site-id'))
+        ]));
     }
 }
