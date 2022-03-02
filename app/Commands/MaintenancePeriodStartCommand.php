@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class MaintenancePeriodStartCommand extends Command
 {
@@ -34,12 +35,8 @@ class MaintenancePeriodStartCommand extends Command
 
         $maintenancePeriod = $ohDear->startSiteMaintenance($this->argument('site-id'), (int) $seconds);
 
-        $this->output->text([
-            "<options=bold>ID:</> {$maintenancePeriod->id}",
-            "<options=bold>Site ID:</> {$maintenancePeriod->siteId}",
-            "<options=bold>Starts At:</> {$maintenancePeriod->startsAt}",
-            "<options=bold>Ends At:</> {$maintenancePeriod->endsAt}",
-            '',
-        ]);
+        render(view('notice', ['notice' => "Started a new maintenance period with id {$maintenancePeriod->id}"]));
+
+        render(view('maintenance-period-show', ['maintenancePeriods' => [$maintenancePeriod]]));
     }
 }
