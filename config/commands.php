@@ -55,11 +55,13 @@ return [
     */
 
     'hidden' => [
-        Symfony\Component\Console\Command\HelpCommand::class,
         NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
+        Symfony\Component\Console\Command\DumpCompletionCommand::class,
+        Symfony\Component\Console\Command\HelpCommand::class,
         Illuminate\Console\Scheduling\ScheduleRunCommand::class,
-        Illuminate\Foundation\Console\VendorPublishCommand::class,
+        Illuminate\Console\Scheduling\ScheduleListCommand::class,
         Illuminate\Console\Scheduling\ScheduleFinishCommand::class,
+        LaravelZero\Framework\Commands\StubPublishCommand::class,
     ],
 
     /*
