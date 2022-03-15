@@ -37,7 +37,7 @@
         "optimize-autoloader": true
     },
     "scripts": {
-        "build": "php ohdear-cli app:build ohdear-cli"
+        "build": "php ohdear-cli app:build"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
