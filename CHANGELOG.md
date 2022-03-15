@@ -1,8 +1,20 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
+
+## 3.0.0 - 2022-03-15
+
+### Added
+- Update to Laravel Zero 9.x ([#25](https://github.com/ohdearapp/ohdear-cli/pull/25))
+- Add commands for managing DNS history ([#26](https://github.com/ohdearapp/ohdear-cli/pull/26))
+
+### Changed
+- Update to use Termwind for output ([#27](https://github.com/ohdearapp/ohdear-cli/pull/27))
+
+### Removed
+- Drop support for PHP 7.x ([#25](https://github.com/ohdearapp/ohdear-cli/pull/25))
 
 ## [2.7.0] - 2021-02-12
 
