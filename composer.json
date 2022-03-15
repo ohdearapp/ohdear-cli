@@ -36,6 +36,9 @@
         "sort-packages": true,
         "optimize-autoloader": true
     },
+    "scripts": {
+        "build": "php ohdear-cli app:build ohdear-cli"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "bin": ["builds/ohdear-cli"]
