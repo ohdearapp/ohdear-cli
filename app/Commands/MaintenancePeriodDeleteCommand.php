@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class MaintenancePeriodDeleteCommand extends Command
 {
@@ -25,6 +26,8 @@ class MaintenancePeriodDeleteCommand extends Command
 
         $ohDear->deleteSiteMaintenance($this->argument('id'));
 
-        $this->info("Removed the maintenance period with id {$this->argument('id')}");
+        render(view('notice', [
+            'notice' => "Removed the maintenance period with id {$this->argument('id')}",
+        ]));
     }
 }

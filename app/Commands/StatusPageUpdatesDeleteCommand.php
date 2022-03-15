@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class StatusPageUpdatesDeleteCommand extends Command
 {
@@ -25,6 +26,8 @@ class StatusPageUpdatesDeleteCommand extends Command
 
         $ohDear->deleteStatusPageUpdate($this->argument('id'));
 
-        $this->info("Removed the status page update with id {$this->argument('id')}");
+        render(view('notice', [
+            'notice' => "Removed the status page update with id {$this->argument('id')}",
+        ]));
     }
 }

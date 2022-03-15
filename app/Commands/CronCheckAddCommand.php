@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class CronCheckAddCommand extends Command
 {
@@ -53,6 +54,8 @@ class CronCheckAddCommand extends Command
 
         $schedule = $cronCheck->cronExpression ?: "every {$cronCheck->frequencyInMinutes} minutes";
 
-        $this->line("{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})");
+        render(view('notice', [
+            'notice' => "{$cronCheck->name} (schedule: {$schedule}, grace time: {$cronCheck->graceTimeInMinutes} minutes) (ping url: {$cronCheck->pingUrl})",
+        ]));
     }
 }

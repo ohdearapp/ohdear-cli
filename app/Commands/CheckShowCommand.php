@@ -5,7 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-use OhDear\PhpSdk\Resources\Check;
+use function Termwind\render;
 
 class CheckShowCommand extends Command
 {
@@ -25,10 +25,6 @@ class CheckShowCommand extends Command
 
         $checks = $ohDear->site($this->argument('site-id'))->checks;
 
-        $this->output->listing(
-            collect($checks)->map(static function (Check $check) {
-                return "{$check->id} ({$check->type})";
-            })->toArray()
-        );
+        render(view('check-show', ['checks' => $checks]));
     }
 }

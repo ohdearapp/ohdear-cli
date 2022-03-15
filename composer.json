@@ -18,18 +18,18 @@
         "php": "^8.0"
     },
     "require-dev": {
-        "laravel-zero/framework": "^9.0",
-        "ohdearapp/ohdear-php-sdk": "^3.3"
+        "illuminate/view": "^9.2",
+        "laravel-zero/framework": "^9.1.1",
+        "nunomaduro/termwind": "^1.6",
+        "ohdearapp/ohdear-php-sdk": "^3.4.1"
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "config": {
         "preferred-install": "dist",

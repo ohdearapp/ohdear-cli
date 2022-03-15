@@ -6,13 +6,14 @@ use App\Commands\Concerns\EnsureHasToken;
 use Carbon\Carbon;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class PerformanceShowCommand extends Command
 {
     use EnsureHasToken;
 
     /** @var string */
-    protected $signature = 'performance:show {id : The id of the status page to view}
+    protected $signature = 'performance:show {id : The id of the site to view}
                                              {start-date? : The date to start at}
                                              {end-date? : The date to end at}
                                              {--limit=5 : The number of records to show}
@@ -39,20 +40,6 @@ class PerformanceShowCommand extends Command
 
         $performances = $ohDear->performanceRecords($this->argument('id'), $startDate, $endDate, $timeframe);
 
-        $performanceData = collect($performances['data']->attributes ?? [])->take((int) $this->option('limit'))->map(static function ($performance) {
-            return [
-                $performance['id'],
-
-                // All times converted from seconds to milliseconds
-                $performance['time_total'] * 1000,
-                $performance['time_namelookup'] * 1000,
-                $performance['time_remoteserver'] * 1000,
-                round($performance['time_download'] * 1000, 5),
-
-                $performance['created_at'],
-            ];
-        })->toArray();
-
-        $this->table(['ID', 'Total (ms)', 'DNS (ms)', 'Remote Server (ms)', 'Download (ms)', 'Created'], $performanceData);
+        render(view('performance-show', ['performances' => collect($performances ?? [])->take((int) $this->option('limit'))]));
     }
 }

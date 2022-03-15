@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class CronCheckDeleteCommand extends Command
 {
@@ -25,6 +26,8 @@ class CronCheckDeleteCommand extends Command
 
         $ohDear->deleteCronCheck($this->argument('id'));
 
-        $this->info("Removed the cron check with id {$this->argument('id')}");
+        render(view('notice', [
+            'notice' => "Removed the cron check with id {$this->argument('id')}",
+        ]));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class CertificateHealthShowCommand extends Command
 {
@@ -13,7 +14,8 @@ class CertificateHealthShowCommand extends Command
     /** @var string */
     protected $signature = 'certificate-health:show {site-id : The id of the site to view certificate health for}
                                                     {--c|checks : Include a list of the certificate checks that were performed}
-                                                    {--i|issuers : Include a list of the certificate issuers}';
+                                                    {--i|issuers : Include a list of the certificate issuers}
+                                                    {--f|full : Include all certificate information}';
 
     /** @var string */
     protected $description = 'Display the certificate health for a site';
@@ -24,30 +26,10 @@ class CertificateHealthShowCommand extends Command
             return 1;
         }
 
-        $certificateHealth = $ohDear->certificateHealth($this->argument('site-id'));
-
-        $this->output->text([
-            '<options=bold,underscore>Certificate Details</>',
-            "<options=bold>Issuer:</> {$certificateHealth->certificateDetails['issuer']}",
-            "<options=bold>Valid From:</> {$certificateHealth->certificateDetails['valid_from']}",
-            "<options=bold>Valid Until:</> {$certificateHealth->certificateDetails['valid_until']}",
-            '',
-        ]);
-
-        if ($this->option('checks')) {
-            $this->output->writeln(' <options=bold,underscore>Checks</>');
-
-            $this->output->listing(
-                collect($certificateHealth->certificateChecks)->map(function (array $check) {
-                    return "{$check['label']} (".($check['passed'] ? 'Passed' : 'Failed').')';
-                })->toArray()
-            );
-        }
-
-        if ($this->option('issuers')) {
-            $this->output->writeln(' <options=bold,underscore>Issuers</>');
-
-            $this->output->listing($certificateHealth->certificateChainIssuers);
-        }
+        render(view('certificate-health-show', [
+            'certificateHealth' => $ohDear->certificateHealth($this->argument('site-id')),
+            'withChecks' => $this->option('checks') || $this->option('full'),
+            'withIssuers' => $this->option('issuers') || $this->option('full'),
+        ]));
     }
 }

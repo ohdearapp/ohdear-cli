@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class MaintenancePeriodStopCommand extends Command
 {
@@ -25,6 +26,6 @@ class MaintenancePeriodStopCommand extends Command
 
         $ohDear->stopSiteMaintenance($this->argument('site-id'));
 
-        $this->info("Stopped the current maintenance period for site with id {$this->argument('site-id')}");
+        render(view('notice', ['notice' => "Stopped the current maintenance period for site with id {$this->argument('site-id')}"]));
     }
 }

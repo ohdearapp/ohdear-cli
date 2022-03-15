@@ -3,9 +3,9 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\EnsureHasToken;
-use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
+use function Termwind\render;
 
 class SitesListCommand extends Command
 {
@@ -23,15 +23,6 @@ class SitesListCommand extends Command
             return 1;
         }
 
-        $siteData = Collection::make($ohDear->sites())->map(static function ($site) {
-            return [
-                $site->id,
-                $site->url,
-                $site->attributes['summarized_check_result'],
-                $site->attributes['latest_run_date'],
-            ];
-        });
-
-        $this->table(['ID', 'URL', 'Status Summary', 'Last Checked'], $siteData);
+        render(view('sites-list', ['sites' => $ohDear->sites()]));
     }
 }

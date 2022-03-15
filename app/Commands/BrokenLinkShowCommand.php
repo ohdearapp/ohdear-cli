@@ -3,10 +3,10 @@
 namespace App\Commands;
 
 use App\Commands\Concerns\EnsureHasToken;
-use Illuminate\Support\Collection;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\BrokenLink;
+use function Termwind\render;
 
 class BrokenLinkShowCommand extends Command
 {
@@ -24,24 +24,9 @@ class BrokenLinkShowCommand extends Command
             return 1;
         }
 
-        $brokenLinks = $ohDear->brokenLinks($this->argument('site-id'));
+        $brokenLinkList = collect($ohDear->brokenLinks($this->argument('site-id')))
+            ->mapToGroups(fn (BrokenLink $brokenLink) => [$brokenLink->foundOnUrl => $brokenLink]);
 
-        if (empty($brokenLinks)) {
-            $this->line('Unable to find any broken links for the specified site');
-
-            return;
-        }
-
-        collect($brokenLinks)->mapToGroups(function (BrokenLink $brokenLink) {
-            return [$brokenLink->foundOnUrl => $brokenLink];
-        })->each(function (Collection $brokenLinkItems, string $key) {
-            $this->info($key);
-
-            $this->output->listing(
-                $brokenLinkItems->map(static function (BrokenLink $item) {
-                    return "({$item->statusCode}) {$item->crawledUrl}";
-                })->toArray()
-            );
-        });
+        render(view('broken-link-show', ['brokenLinkList' => $brokenLinkList]));
     }
 }
