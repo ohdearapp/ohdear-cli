@@ -10,7 +10,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->singleton(OhDear::class, function () {
-            return new OhDear(config('settings.ohdear_api_token'));
+            return new OhDear(config('settings.ohdear_api_token') ?? '');
         });
     }
 
