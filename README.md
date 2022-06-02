@@ -90,6 +90,8 @@ ohdear-cli list
    Display a list of DNS history items and their summary
 - `ohdear-cli dns-history:show [site-id] [id]`  
    Display details about a specific DNS history item
+- `ohdear-cli application-health:show [id]`   
+  Display application health for a specific site
 
 ## Contributing
 
