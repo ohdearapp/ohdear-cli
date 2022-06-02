@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 3.1.0 - 2022-06-02
+
+### Added
+- Add proper authorisation output when unauthorised ([#32](https://github.com/ohdearapp/ohdear-cli/pull/32))
+
+### Fixed
+- Update to ignore the `VIEW_COMPILED_PATH` env variable ([ba2ef8e](https://github.com/ohdearapp/ohdear-cli/commit/ba2ef8ebd19516409a59daabd895a50aadcf9d41))
+
 ## 3.0.0 - 2022-03-15
 
 ### Added
