@@ -2,6 +2,8 @@
 
 namespace App\Commands\Concerns;
 
+use function Termwind\render;
+
 trait EnsureHasToken
 {
     protected function hasToken(): bool
@@ -12,7 +14,7 @@ trait EnsureHasToken
     protected function ensureHasToken(): bool
     {
         if (! $this->hasToken()) {
-            $this->error('You have not configured your Oh Dear API token yet. Please set the `OHDEAR_API_TOKEN` environment variable first.');
+            render(view('unauthorised'));
 
             return false;
         }
