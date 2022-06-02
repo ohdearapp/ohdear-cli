@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Worksome\Envy\Commands\Concerns;
 
 use Illuminate\Console\Command;
-
 use function Termwind\render;
 
 /**
