@@ -34,7 +34,10 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.0.2"
+        }
     },
     "scripts": {
         "build": "php ohdear-cli app:build"
