@@ -18,15 +18,21 @@ Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro), is main
 
 Via Composer
 
-```bash
+```shell
 composer global require ohdearapp/ohdear-cli
+```
+
+Via [Homebrew](https://formulae.brew.sh/formula/ohdear-cli)
+
+```shell
+brew install ohdear-cli
 ```
 
 Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user/api-tokens).
 
 ## Usage
 
-```bash
+```shell
 ohdear-cli list
 ```
 
