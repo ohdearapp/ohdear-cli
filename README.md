@@ -28,9 +28,9 @@ Via [Homebrew](https://formulae.brew.sh/formula/ohdear-cli)
 brew install ohdear-cli
 ```
 
-If brew can't find the formula, try running `brew update`.
+If Brew can't find the formula, try running `brew update`.
 
-Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user/api-tokens).
+Once the Oh Dear CLI is installed, set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user/api-tokens).
 
 ## Usage
 
@@ -38,68 +38,106 @@ Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can ge
 ohdear-cli list
 ```
 
-**Available commands**
+### Available commands
+
+#### Account
 
 - `ohdear-cli me`  
-   Display details about the currently authenticated user
-- `ohdear-cli sites:add [url]`  
-   Add a new site to Oh Dear
-- `ohdear-cli sites:list`  
-   Display a list of sites and their current status
-- `ohdear-cli sites:show [id]`  
-   Display details about a specific site
-- `ohdear-cli status-pages:list`  
-   Display a list of status pages and their current status
-- `ohdear-cli status-pages:show [id]`  
-   Display details about a specific status page
-- `ohdear-cli performance:show [id] [start-date?] [end-date?] [--limit=5] [--timeframe=1h]`  
-   Display performance details for a specific site
-- `ohdear-cli maintenance-period:add [site-id] [start-date] [end-date]`  
-   Add a new maintenance period for a site
-- `ohdear-cli maintenance-period:delete [id]`  
-   Delete a maintenance period
-- `ohdear-cli maintenance-period:show [id]`  
-   Display maintenance periods for a specific site
-- `ohdear-cli maintenance-period:start [site-id] [seconds]`  
-   Start a new maintenance period for a site
-- `ohdear-cli maintenance-period:stop [site-id]`  
-   Stop the currently active maintenance period for a site
-- `ohdear-cli mixed-content:show [site-id]`  
-   Display mixed content for a specific site
-- `ohdear-cli broken-link:show [site-id]`  
-   Display broken links for a specific site
-- `ohdear-cli certificate-health:show [site-id] [--checks] [--issuers]`  
-   Display certificate health for a specific site (use `--checks` or `--issuers` for additional information)
-- `ohdear-cli check:show [site-id]`  
-   Display checks for a specific site
-- `ohdear-cli check:enable [id]`  
-   Enable a specific check
-- `ohdear-cli check:disable [id]`  
-   Disable a specific check
-- `ohdear-cli check:request-run [id]`  
-   Request a new run for a specific check
-- `ohdear-cli uptime:show [site-id] [start-date?] [end-date?] [--limit=10] [--timeframe=hour]`  
-   Display the uptime for a specific site
-- `ohdear-cli downtime:show [site-id] [start-date?] [end-date?] [--limit=10]`  
-   Display the downtime for a specific site
-- `ohdear-cli cron-check:show [site-id]`  
-   Display the cron checks for a specific site
-- `ohdear-cli cron-check:add [site-id] [name] [frequency-or-expression] [--grace-time=5] [--description=] [--timezone=UTC]`  
-   Add a new cron check for a site
-- `ohdear-cli cron-check:delete [id]`  
-   Delete a cron check
-- `ohdear-cli status-page-updates:add [status-page-id] [title] [text] [--severity=info] [--pinned] [--time=]`  
-   Add a new update for a status page
-- `ohdear-cli status-page-updates:list [status-page-id]`  
-   Display updates for a status page
-- `ohdear-cli status-page-updates:delete [id]`  
-   Delete a status page update
-- `ohdear-cli dns-history:list`  
-   Display a list of DNS history items and their summary
-- `ohdear-cli dns-history:show [site-id] [id]`  
-   Display details about a specific DNS history item
+  Display details about the currently authenticated user
+
+#### Application Health Monitoring
+
 - `ohdear-cli application-health:show [id]`   
   Display application health for a specific site
+
+#### Broken Links
+
+- `ohdear-cli broken-link:show [site-id]`  
+  Display broken links for a specific site
+
+#### Certificate Health
+
+- `ohdear-cli certificate-health:show [site-id] [--checks] [--issuers]`  
+  Display certificate health for a specific site (use `--checks` or `--issuers` for additional information)
+
+#### Checks
+
+- `ohdear-cli check:disable [id]`  
+  Disable a specific check
+- `ohdear-cli check:enable [id]`  
+  Enable a specific check
+- `ohdear-cli check:request-run [id]`  
+  Request a new run for a specific check
+- `ohdear-cli check:show [site-id]`  
+  Display checks for a specific site
+
+#### Cron Job Monitoring
+
+- `ohdear-cli cron-check:add [site-id] [name] [frequency-or-expression] [--grace-time=5] [--description=] [--timezone=UTC]`  
+  Add a new cron check for a site
+- `ohdear-cli cron-check:delete [id]`  
+  Delete a cron check
+- `ohdear-cli cron-check:show [site-id]`  
+  Display the cron checks for a specific site
+
+#### DNS Monitoring
+
+- `ohdear-cli dns-history:list`  
+  Display a list of DNS history items and their summary
+- `ohdear-cli dns-history:show [site-id] [id]`  
+  Display details about a specific DNS history item
+
+#### Uptime
+
+- `ohdear-cli uptime:show [site-id] [start-date?] [end-date?] [--limit=10] [--timeframe=hour]`  
+  Display the uptime for a specific site
+- `ohdear-cli downtime:show [site-id] [start-date?] [end-date?] [--limit=10]`  
+  Display the downtime for a specific site
+
+#### Maintenance Windows
+
+- `ohdear-cli maintenance-period:add [site-id] [start-date] [end-date]`  
+  Add a new maintenance period for a site
+- `ohdear-cli maintenance-period:delete [id]`  
+  Delete a maintenance period
+- `ohdear-cli maintenance-period:show [id]`  
+  Display maintenance periods for a specific site
+- `ohdear-cli maintenance-period:start [site-id] [seconds]`  
+  Start a new maintenance period for a site
+- `ohdear-cli maintenance-period:stop [site-id]`  
+  Stop the currently active maintenance period for a site
+
+#### Mixed Content
+
+- `ohdear-cli mixed-content:show [site-id]`  
+  Display mixed content for a specific site
+
+#### Performance
+
+- `ohdear-cli performance:show [id] [start-date?] [end-date?] [--limit=5] [--timeframe=1h]`  
+  Display performance details for a specific site
+
+#### Sites
+
+- `ohdear-cli sites:add [url]`  
+  Add a new site to Oh Dear
+- `ohdear-cli sites:list`  
+  Display a list of sites and their current status
+- `ohdear-cli sites:show [id]`  
+  Display details about a specific site
+
+#### Status Pages
+
+- `ohdear-cli status-pages:list`  
+  Display a list of status pages and their current status
+- `ohdear-cli status-pages:show [id]`  
+  Display details about a specific status page
+- `ohdear-cli status-page-updates:add [status-page-id] [title] [text] [--severity=info] [--pinned] [--time=]`  
+  Add a new update for a status page
+- `ohdear-cli status-page-updates:list [status-page-id]`  
+  Display updates for a status page
+- `ohdear-cli status-page-updates:delete [id]`  
+  Delete a status page update
 
 ## Contributing
 
