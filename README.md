@@ -28,6 +28,8 @@ Via [Homebrew](https://formulae.brew.sh/formula/ohdear-cli)
 brew install ohdear-cli
 ```
 
+If brew can't find the formula, try running `brew update`.
+
 Then set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user/api-tokens).
 
 ## Usage
