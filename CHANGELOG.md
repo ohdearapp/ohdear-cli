@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 3.2.1 - 2022-06-06
+
+### Fixed
+- Fix compatibility with PHP 8.0 ([86e042c](https://github.com/ohdearapp/ohdear-cli/commit/86e042c17e80efc4b789bdbb6e433d6c7b9dbd3b))
+
 ## 3.2.0 - 2022-06-02
 
 ### Added
