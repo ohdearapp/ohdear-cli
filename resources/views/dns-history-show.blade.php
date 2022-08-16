@@ -1,4 +1,4 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     <div>
         <span class="font-bold text-gray block">ID:</span> {{ $dnsHistoryItem->id }}
         <span class="font-bold text-gray block">Status Summary:</span> {{ $dnsHistoryItem->diffSummary }}
@@ -46,4 +46,4 @@
             </li>
         @endforelse
     </ul>
-</div>
+</x-layouts.app>

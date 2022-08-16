@@ -1,4 +1,4 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     <div>
         <span class="underline">Certificate Details</span>
         <span class="font-bold text-gray block">Issuer:</span> {{ $certificateHealth->certificateDetails['issuer'] }}
@@ -40,4 +40,4 @@
             @endforelse
         </ul>
     @endif
-</div>
+</x-layouts.app>

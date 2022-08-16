@@ -1,4 +1,4 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     <div>
         <span class="font-bold text-gray block">ID:</span> {{ $user->id }}
         <span class="font-bold text-gray block">Name:</span> {{ $user->name }}
@@ -18,4 +18,4 @@
             </li>
         @endforelse
     </ul>
-</div>
+</x-layouts.app>

@@ -1,4 +1,4 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     <div>
         <span class="font-bold text-gray block">ID:</span> {{ $site->id }}
         <span class="font-bold text-gray block">URL:</span> {{ $site->url }}
@@ -20,4 +20,4 @@
             </li>
         @endforelse
     </ul>
-</div>
+</x-layouts.app>

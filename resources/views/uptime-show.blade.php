@@ -1,4 +1,4 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     <div class="underline">Uptime:</div>
 
     <ul>
@@ -12,4 +12,4 @@
             </li>
         @endforelse
     </ul>
-</div>
+</x-layouts.app>

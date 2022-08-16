@@ -1,4 +1,4 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     <table style="box">
         <thead>
         <tr>
@@ -33,4 +33,4 @@
             </tr>
         @endforelse
     </table>
-</div>
+    </x-layouts.app>

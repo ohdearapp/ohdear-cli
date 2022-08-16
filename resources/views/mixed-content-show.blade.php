@@ -1,4 +1,4 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     @forelse($mixedContentList as $foundOnUrl => $mixedContents)
         <div>
             <div class="underline mt-1">{{ $foundOnUrl }}</div>
@@ -20,4 +20,4 @@
             <span>No mixed content was found for the specified site.</span>
         </div>
     @endforelse
-</div>
+</x-layouts.app>

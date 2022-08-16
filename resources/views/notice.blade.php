@@ -1,3 +1,3 @@
-<div class="ml-2 my-1">
+<x-layouts.app>
     <span>{{ $notice }}</span>
-</div>
+</x-layouts.app>

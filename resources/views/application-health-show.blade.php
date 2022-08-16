@@ -1,5 +1,5 @@
 @php /** @var array<int, OhDear\PhpSdk\Resources\ApplicationHealthCheck> $applicationHealthChecks */ @endphp
-<div class="ml-2 my-1">
+<x-layouts.app>
     <div class="underline mt-1">Application Health:</div>
 
     <ul>
@@ -14,4 +14,4 @@
             </li>
         @endforelse
     </ul>
-</div>
+</x-layouts.app>
