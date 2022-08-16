@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 3.2.2 - 2022-08-16
+
+### Changed
+- Move app layout into component ([#37](https://github.com/ohdearapp/ohdear-cli/pull/37))
+- Handle expired or invalid tokens ([#38](https://github.com/ohdearapp/ohdear-cli/pull/38))
+
 ## 3.2.1 - 2022-06-06
 
 ### Fixed
