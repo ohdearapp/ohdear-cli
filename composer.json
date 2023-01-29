@@ -15,12 +15,12 @@
         }
     ],
     "require": {
-        "php": "^8.0"
+        "php": "^8.1"
     },
     "require-dev": {
-        "illuminate/view": "^9.24",
-        "laravel-zero/framework": "^9.1.1",
-        "nunomaduro/termwind": "^1.14",
+        "illuminate/view": "^9.48",
+        "laravel-zero/framework": "^9.2",
+        "nunomaduro/termwind": "^1.15",
         "ohdearapp/ohdear-php-sdk": "^3.4.4"
     },
     "autoload": {
@@ -36,7 +36,7 @@
         "sort-packages": true,
         "optimize-autoloader": true,
         "platform": {
-            "php": "8.0.2"
+            "php": "8.1"
         }
     },
     "scripts": {
