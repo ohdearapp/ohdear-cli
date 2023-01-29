@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1001285ff36aa929e91ab79b276f97b6",
+    "content-hash": "fb9394741d59340b51433a80db8baa5a",
     "packages": [],
     "packages-dev": [
         {
@@ -1851,16 +1851,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.65.0",
+            "version": "2.66.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "09acf64155c16dc6f580f36569ae89344e9734a3"
+                "reference": "496712849902241f04902033b0441b269effe001"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/09acf64155c16dc6f580f36569ae89344e9734a3",
-                "reference": "09acf64155c16dc6f580f36569ae89344e9734a3",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/496712849902241f04902033b0441b269effe001",
+                "reference": "496712849902241f04902033b0441b269effe001",
                 "shasum": ""
             },
             "require": {
@@ -1949,7 +1949,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-06T15:55:01+00:00"
+            "time": "2023-01-29T18:53:47+00:00"
         },
         {
             "name": "nunomaduro/collision",
@@ -2321,27 +2321,28 @@
         },
         {
             "name": "ohdearapp/ohdear-php-sdk",
-            "version": "3.4.4",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ohdearapp/ohdear-php-sdk.git",
-                "reference": "e265480183d14134c59aa309b61bb3547fcbe48a"
+                "reference": "35401dd598339a159fad0122d08199936e215901"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ohdearapp/ohdear-php-sdk/zipball/e265480183d14134c59aa309b61bb3547fcbe48a",
-                "reference": "e265480183d14134c59aa309b61bb3547fcbe48a",
+                "url": "https://api.github.com/repos/ohdearapp/ohdear-php-sdk/zipball/35401dd598339a159fad0122d08199936e215901",
+                "reference": "35401dd598339a159fad0122d08199936e215901",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^6.3|^7.0",
-                "nesbot/carbon": "^2.35.0",
-                "php": "^7.4|^8.0"
+                "guzzlehttp/guzzle": "^6.5.8|^7.5",
+                "nesbot/carbon": "^2.65.0",
+                "php": "^8.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.0",
-                "psalm/plugin-laravel": "^1.2",
-                "vlucas/phpdotenv": "^4.0"
+                "pestphp/pest": "^1.22",
+                "pestphp/pest-plugin-parallel": "^1.2",
+                "psalm/plugin-laravel": "^2.5",
+                "vlucas/phpdotenv": "^5.5"
             },
             "type": "library",
             "autoload": {
@@ -2371,9 +2372,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ohdearapp/ohdear-php-sdk/issues",
-                "source": "https://github.com/ohdearapp/ohdear-php-sdk/tree/3.4.4"
+                "source": "https://github.com/ohdearapp/ohdear-php-sdk/tree/3.5.0"
             },
-            "time": "2022-06-21T17:36:24+00:00"
+            "time": "2023-01-30T10:38:28+00:00"
         },
         {
             "name": "phpoption/phpoption",
