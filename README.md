@@ -14,7 +14,7 @@ Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro), is main
 
 ## Install
 
-> **Requires [PHP 8.0+](https://php.net/releases)**
+> **Requires [PHP 8.1+](https://php.net/releases)**
 
 Via Composer
 
@@ -82,17 +82,19 @@ ohdear-cli list
 
 #### DNS Monitoring
 
-- `ohdear-cli dns-history:list`  
+- `ohdear-cli dns-history:list [site-id]`  
   Display a list of DNS history items and their summary
 - `ohdear-cli dns-history:show [site-id] [id]`  
   Display details about a specific DNS history item
 
-#### Uptime
+#### Lighthouse SEO Reports
 
-- `ohdear-cli uptime:show [site-id] [start-date?] [end-date?] [--limit=10] [--timeframe=hour]`  
-  Display the uptime for a specific site
-- `ohdear-cli downtime:show [site-id] [start-date?] [end-date?] [--limit=10]`  
-  Display the downtime for a specific site
+- `ohdear-cli lighthouse-report:list [site-id]`  
+  Display a list of Lighthouse reports and their summary
+- `ohdear-cli lighthouse-report:show [site-id]`  
+  Display details about the latest Lighthouse report
+- `ohdear-cli lighthouse-report:show [site-id] [id]`  
+  Display details about a specific Lighthouse report
 
 #### Maintenance Windows
 
@@ -138,6 +140,13 @@ ohdear-cli list
   Display updates for a status page
 - `ohdear-cli status-page-updates:delete [id]`  
   Delete a status page update
+
+#### Uptime
+
+- `ohdear-cli uptime:show [site-id] [start-date?] [end-date?] [--limit=10] [--timeframe=hour]`  
+  Display the uptime for a specific site
+- `ohdear-cli downtime:show [site-id] [start-date?] [end-date?] [--limit=10]`  
+  Display the downtime for a specific site
 
 ## Contributing
 
