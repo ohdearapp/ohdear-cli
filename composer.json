@@ -21,7 +21,7 @@
         "illuminate/view": "^9.48",
         "laravel-zero/framework": "^9.2",
         "nunomaduro/termwind": "^1.15",
-        "ohdearapp/ohdear-php-sdk": "^3.4.4"
+        "ohdearapp/ohdear-php-sdk": "^3.5"
     },
     "autoload": {
         "psr-4": {
