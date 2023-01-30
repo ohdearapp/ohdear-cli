@@ -1,5 +1,4 @@
 {
-    "chmod": "0755",
     "directories": [
         "app",
         "bootstrap",

@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 3.3.0 - 2023-01-30
+
+### Added
+- Add support for Lighthouse Reports ([#40](https://github.com/ohdearapp/ohdear-cli/pull/40))
+
+### Removed
+- Drop support for PHP 8.0 ([#41](https://github.com/ohdearapp/ohdear-cli/pull/41))
+
 ## 3.2.2 - 2022-08-16
 
 ### Changed
