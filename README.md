@@ -22,6 +22,12 @@ Via Composer
 composer global require ohdearapp/ohdear-cli
 ```
 
+Via [Docker](https://docker.com)
+
+```shell
+docker run --rm ghcr.io/ohdearapp/ohdear-cli:latest
+```
+
 Via [Homebrew](https://formulae.brew.sh/formula/ohdear-cli)
 
 ```shell
