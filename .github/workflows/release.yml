@@ -10,6 +10,8 @@ jobs:
     name: PHAR
     runs-on: ubuntu-latest
 
+    if: github.repository == 'ohdearapp/ohdear-cli'
+
     steps:
 
     - name: Checkout
@@ -37,6 +39,8 @@ jobs:
   docker-release:
     name: Docker
     runs-on: ubuntu-latest
+
+    if: github.repository == 'ohdearapp/ohdear-cli'
 
     permissions:
       contents: read
