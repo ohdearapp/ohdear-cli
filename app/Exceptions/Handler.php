@@ -6,8 +6,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use OhDear\PhpSdk\Exceptions\UnauthorizedException;
-use function Termwind\render;
 use Throwable;
+
+use function Termwind\render;
 
 class Handler extends ExceptionHandler
 {
