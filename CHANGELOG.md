@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 3.5.0 - 2023-04-20
+
+### Added
+- Update to Laravel Zero 10.x ([#45](https://github.com/ohdearapp/ohdear-cli/pull/45))
+
 ## 3.4.0 - 2023-03-02
 
 ### Added
