@@ -1,10 +1,17 @@
 * text=auto
 
 /.editorconfig   export-ignore
+/.env.example    export-ignore
 /.gitattributes  export-ignore
 /.github         export-ignore
 /.gitignore      export-ignore
-/.styleci.yml    export-ignore
 /box.json        export-ignore
+/app             export-ignore
+/bootstrap       export-ignore
+/config          export-ignore
 /docs            export-ignore
+/resources       export-ignore
+/storage         export-ignore
+/Dockerfile      export-ignore
 /CHANGELOG.md    export-ignore
+/composer.lock   export-ignore
