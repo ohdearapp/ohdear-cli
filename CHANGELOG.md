@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 4.0.0 - 2023-05-25
+
+### Changed
+- **BREAKING** Rename the CLI binary from `ohdear-cli` to `ohdear` ([#46](https://github.com/ohdearapp/ohdear-cli/pull/46))
+
 ## 3.5.1 - 2023-04-20
 
 ### Fixed
