@@ -3,14 +3,14 @@
 </p>
 
 <p align="center">
-  <a href="https://styleci.io/repos/121807251"><img src="https://styleci.io/repos/121807251/shield" alt="StyleCI Status"/></a>
-  <a href="https://packagist.org/packages/ohdearapp/ohdear-cli"><img src="https://img.shields.io/packagist/v/ohdearapp/ohdear-cli.svg?style=flat-square&label=stable" alt="Latest Stable Version"/></a>
+  <a href="https://github.com/ohdearapp/ohdear-cli/actions/workflows/static.yml"><img src="https://img.shields.io/github/actions/workflow/status/ohdearapp/ohdear-cli/static.yml?style=flat-square&label=static%20analysis" alt="Static Analysis status"/></a>
+    <a href="https://packagist.org/packages/ohdearapp/ohdear-cli"><img src="https://img.shields.io/packagist/v/ohdearapp/ohdear-cli.svg?style=flat-square&label=stable" alt="Latest Stable Version"/></a>
   <a href="https://packagist.org/packages/ohdearapp/ohdear-cli"><img src="https://img.shields.io/packagist/l/ohdearapp/ohdear-cli.svg?style=flat-square" alt="License"/></a>
 </p>
 
 ## About Oh Dear CLI
 
-Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro), is maintained by [Owen Voke](https://github.com/owenvoke), and is an Oh Dear CLI tool written in PHP with Laravel Zero.
+Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro) and [Owen Voke](https://github.com/owenvoke), and is an Oh Dear CLI tool written in PHP with Laravel Zero.
 
 ## Install
 
@@ -158,13 +158,7 @@ ohdear list
 
 Thank you for considering contributing to Oh Dear CLI. All contributions are welcome via pull requests.
 
-You can have a look at the [CHANGELOG](CHANGELOG.md) for constant updates & detailed information about the changes. You can also follow the Twitter account for latest announcements or just come say hi!: [@enunomaduro](https://twitter.com/enunomaduro)
-
-## Support the development
-**Do you like this project? Support it by donating**
-
-- PayPal: [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L)
-- Patreon: [Donate](https://www.patreon.com/nunomaduro)
+You can have a look at the [CHANGELOG](CHANGELOG.md) for constant updates & detailed information about the changes.
 
 ## License
 
