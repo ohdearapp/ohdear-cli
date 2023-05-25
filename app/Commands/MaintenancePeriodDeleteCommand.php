@@ -5,7 +5,6 @@ namespace App\Commands;
 use App\Commands\Concerns\EnsureHasToken;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-
 use function Termwind\render;
 
 class MaintenancePeriodDeleteCommand extends Command
