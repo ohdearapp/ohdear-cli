@@ -32,8 +32,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./builds/ohdear-cli
-        asset_name: ohdear-cli.phar
+        asset_path: ./builds/ohdear
+        asset_name: ohdear.phar
         asset_content_type: application/octet-stream
 
   docker-release:

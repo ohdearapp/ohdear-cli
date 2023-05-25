@@ -40,9 +40,9 @@
         }
     },
     "scripts": {
-        "build": "php ohdear-cli app:build"
+        "build": "php ohdear app:build"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "bin": ["builds/ohdear-cli"]
+    "bin": ["builds/ohdear"]
 }
