@@ -6,7 +6,6 @@ use App\Commands\Concerns\EnsureHasToken;
 use Carbon\Carbon;
 use LaravelZero\Framework\Commands\Command;
 use OhDear\PhpSdk\OhDear;
-
 use function Termwind\render;
 
 class PerformanceShowCommand extends Command
