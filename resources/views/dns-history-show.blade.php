@@ -24,7 +24,7 @@
     <ul>
         @forelse ($dnsHistoryItem->dnsRecords as $dnsRecord)
             <li>
-                <span class="font-bold text-gray">{{ $dnsRecord['type'] }}</span> - {{ $dnsRecord['host'] }}, <span class="text-gray">{{ format_dns_type($dnsRecord) }}</span> (TTL {{ $dnsRecord['ttl'] }})
+                <span class="font-bold text-gray">{{ $dnsRecord['type'] }}</span> - {{ $dnsRecord['host'] }}, <span class="text-gray">{{ App\format_dns_type($dnsRecord) }}</span> (TTL {{ $dnsRecord['ttl'] }})
             </li>
         @empty
             <li class="list-none">
