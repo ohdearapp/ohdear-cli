@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace App;
+
 if (! function_exists('format_dns_type')) {
     function format_dns_type(array $dnsRecord): string
     {
