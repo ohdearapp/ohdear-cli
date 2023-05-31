@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 4.1.0 - 2023-05-31
+
+### Changed
+- Add `App` namespace for helper functions ([#48](https://github.com/ohdearapp/ohdear-cli/pull/48))
+- Remove unnecessary files from export ([#49](https://github.com/ohdearapp/ohdear-cli/pull/49))
+
 ## 4.0.0 - 2023-05-25
 
 ### Changed
