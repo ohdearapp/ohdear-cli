@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 4.2.0 - 2023-10-12
+
+### Added
+- Add support for Domain Monitoring ([#51](https://github.com/ohdearapp/ohdear-cli/pull/51))
+
+### Changed
+- Update Composer dependencies ([#50](https://github.com/ohdearapp/ohdear-cli/pull/50))
+
 ## 4.1.1 - 2023-05-31
 
 ### Changed
