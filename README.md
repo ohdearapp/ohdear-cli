@@ -14,7 +14,7 @@ Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro) and [Owe
 
 ## Install
 
-> **Requires [PHP 8.1+](https://php.net/releases)**
+> **Requires [PHP 8.2+](https://php.net/releases)**
 
 Via Composer
 
