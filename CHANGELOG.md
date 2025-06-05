@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 4.3.1 - 2025-06-05
+
+### Fixed
+- Update dependencies to support PHP 8.4
+
 ## 4.3.0 - 2024-04-30
 
 ### Changed
