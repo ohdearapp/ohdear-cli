@@ -18,10 +18,10 @@
         "php": "^8.2"
     },
     "require-dev": {
-        "illuminate/view": "^11.5",
-        "laravel-zero/framework": "^11.0",
+        "illuminate/view": "^12.0",
+        "laravel-zero/framework": "^12.0",
         "nunomaduro/termwind": "^2.0",
-        "ohdearapp/ohdear-php-sdk": "^3.10.2"
+        "ohdearapp/ohdear-php-sdk": "^3.10.3"
     },
     "autoload": {
         "psr-4": {
