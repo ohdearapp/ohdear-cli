@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 4.4.0 - 2025-06-13
+
+### Changed
+- Update to Laravel Zero 12.x
+
 ## 4.3.1 - 2025-06-05
 
 ### Fixed
