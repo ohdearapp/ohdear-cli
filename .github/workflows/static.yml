@@ -1,33 +1,27 @@
-name: Static Analysis
+name: Fix PHP code style issues
 
-on: ['push', 'pull_request']
+on:
+  push:
+    paths:
+      - '**.php'
+
+permissions:
+  contents: write
 
 jobs:
-  pint:
+  php-code-styling:
     runs-on: ubuntu-latest
 
-    name: Pint
-
     steps:
-
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Checkout code
+        uses: actions/checkout@v6
         with:
-          php-version: 8.2
-          extensions: zip
-          coverage: none
+          ref: ${{ github.head_ref }}
 
-      - name: Install PHP dependencies
-        uses: ramsey/composer-install@v2
+      - name: Fix PHP code style issues
+        uses: aglipanci/laravel-pint-action@2.6
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          dependency-versions: highest
-          composer-options: "--prefer-dist"
-
-      - name: Install Pint
-        run: composer global require laravel/pint --dev
-
-      - name: Run Pint
-        run: pint --test --ansi
+          commit_message: Fix styling
