@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## 5.0.0 - 2026-02-23
+
+### Changed
+- Complete rewrite using `spatie/laravel-openapi-cli` to auto-generate all API commands from the Oh Dear OpenAPI spec
+- Replace 30+ manually written command classes with auto-generated commands
+- New `login`/`logout` flow using `~/.ohdear/config.json` for credential storage
+- Add `clear-cache` command for managing cached OpenAPI spec
+- Add `install-skill` command for AI coding assistant integration
+- Add ASCII art banner with warm orange gradient
+- Require PHP 8.4+
+- Update to Laravel Zero 12.x
+
+### Removed
+- Remove `ohdearapp/ohdear-php-sdk` dependency (replaced by direct API calls via OpenAPI spec)
+- Remove `illuminate/view` and `nunomaduro/termwind` dependencies
+- Remove all Blade views and Termwind output
+- Remove environment variable based authentication (replaced by `ohdear login`)
+
 ## 4.5.2 - 2025-08-27
 
 ### Fixed

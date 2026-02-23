@@ -10,11 +10,11 @@
 
 ## About Oh Dear CLI
 
-Oh Dear CLI was created by [Nuno Maduro](https://github.com/nunomaduro) and [Owen Voke](https://github.com/owenvoke), and is an Oh Dear CLI tool written in PHP with Laravel Zero.
+Oh Dear CLI is a command line tool to manage [Oh Dear](https://ohdear.app) website monitoring. Built with Laravel Zero, it auto-generates commands from the Oh Dear OpenAPI spec so every API endpoint is available as a CLI command.
 
 ## Install
 
-> **Requires [PHP 8.2+](https://php.net/releases)**
+> **Requires [PHP 8.4+](https://php.net/releases)**
 
 Via Composer
 
@@ -22,143 +22,127 @@ Via Composer
 composer global require ohdearapp/ohdear-cli
 ```
 
-Via [Docker](https://docker.com)
+Ensure Composer's global bin directory is in your `PATH`:
 
 ```shell
-docker run --rm ghcr.io/ohdearapp/ohdear-cli:latest
+composer global config bin-dir --absolute
 ```
 
-Via [Homebrew](https://formulae.brew.sh/formula/ohdear-cli)
+## Authentication
+
+First, log in with your Oh Dear API token. You can generate one at [ohdear.app/user-settings/api](https://ohdear.app/user-settings/api).
 
 ```shell
-brew install ohdear-cli
+ohdear login
 ```
 
-If Brew can't find the formula, try running `brew update`.
+You'll be prompted for your API token. The token is stored in `~/.ohdear/config.json`.
 
-Once the Oh Dear CLI is installed, set your API key in the `OHDEAR_API_TOKEN` environment variable, you can generate one from [the API access page](https://ohdear.app/user/api-tokens).
+To log out:
+
+```shell
+ohdear logout
+```
 
 ## Usage
+
+List all available commands:
 
 ```shell
 ohdear list
 ```
 
-### Available commands
+### Monitors
 
-#### Account
+```shell
+# List all monitors
+ohdear list-monitors
 
-- `ohdear me`  
-  Display details about the currently authenticated user
+# Get a specific monitor
+ohdear get-monitor --monitor-id=123
 
-#### Application Health Monitoring
+# Add a new monitor
+ohdear create-monitor --field url="https://example.com" --field team_id=1
 
-- `ohdear application-health:show [id]`   
-  Display application health for a specific monitor
+# Delete a monitor
+ohdear delete-monitor --monitor-id=123
+```
 
-#### Broken Links
+### Uptime and downtime
 
-- `ohdear broken-link:show [monitor-id]`  
-  Display broken links for a specific monitor
+```shell
+ohdear get-uptime --monitor-id=123
+ohdear get-downtime --monitor-id=123
+```
 
-#### Certificate Health
+### Broken links and mixed content
 
-- `ohdear certificate-health:show [monitor-id] [--checks] [--issuers]`  
-  Display certificate health for a specific monitor (use `--checks` or `--issuers` for additional information)
+```shell
+ohdear list-broken-links --monitor-id=123
+ohdear list-mixed-content --monitor-id=123
+```
 
-#### Checks
+### Certificate health
 
-- `ohdear check:disable [id]`  
-  Disable a specific check
-- `ohdear check:enable [id]`  
-  Enable a specific check
-- `ohdear check:request-run [id]`  
-  Request a new run for a specific check
-- `ohdear check:show [monitor-id]`  
-  Display checks for a specific monitor
+```shell
+ohdear get-certificate-health --monitor-id=123
+```
 
-#### Cron Job Monitoring
+### Maintenance periods
 
-- `ohdear cron-check:add [monitor-id] [name] [frequency-or-expression] [--grace-time=5] [--description=] [--timezone=UTC]`  
-  Add a new cron check for a monitor
-- `ohdear cron-check:delete [id]`  
-  Delete a cron check
-- `ohdear cron-check:show [monitor-id]`  
-  Display the cron checks for a specific monitor
+```shell
+ohdear start-maintenance --monitor-id=123
+ohdear stop-maintenance --monitor-id=123
+ohdear list-maintenance-periods --monitor-id=123
+```
 
-#### DNS Monitoring
+### Status pages
 
-- `ohdear dns-history:list [monitor-id]`  
-  Display a list of DNS history items and their summary
-- `ohdear dns-history:show [monitor-id] [id]`  
-  Display details about a specific DNS history item
+```shell
+ohdear list-status-pages
+ohdear get-status-page --status-page-id=123
+ohdear create-status-page-update --status-page-id=123 --field title="Investigating" --field text="Looking into it."
+```
 
-#### Lighthouse SEO Reports
+### Cron checks
 
-- `ohdear lighthouse-report:list [monitor-id]`  
-  Display a list of Lighthouse reports and their summary
-- `ohdear lighthouse-report:show [monitor-id]`  
-  Display details about the latest Lighthouse report
-- `ohdear lighthouse-report:show [monitor-id] [id]`  
-  Display details about a specific Lighthouse report
+```shell
+ohdear list-cron-checks --monitor-id=123
+ohdear create-cron-check --monitor-id=123 --field name="Daily Backup" --field frequency_in_minutes=1440
+```
 
-#### Maintenance Windows
+### Lighthouse reports
 
-- `ohdear maintenance-period:add [monitor-id] [start-date] [end-date]`  
-  Add a new maintenance period for a monitor
-- `ohdear maintenance-period:delete [id]`  
-  Delete a maintenance period
-- `ohdear maintenance-period:show [id]`  
-  Display maintenance periods for a specific monitor
-- `ohdear maintenance-period:start [monitor-id] [seconds]`  
-  Start a new maintenance period for a monitor
-- `ohdear maintenance-period:stop [monitor-id]`  
-  Stop the currently active maintenance period for a monitor
+```shell
+ohdear get-latest-lighthouse-report --monitor-id=123
+ohdear list-lighthouse-reports --monitor-id=123
+```
 
-#### Mixed Content
+### Other commands
 
-- `ohdear mixed-content:show [monitor-id]`  
-  Display mixed content for a specific monitor
+```shell
+ohdear get-me                    # Display authenticated user info
+ohdear get-dns-history           # DNS history for a monitor
+ohdear list-application-health-checks  # Application health checks
+ohdear list-tags                 # List all tags
+ohdear clear-cache               # Clear cached OpenAPI spec
+```
 
-#### Performance
+All commands output JSON. Run `ohdear <command> --help` for full parameter details.
 
-- `ohdear performance:show [id] [start-date?] [end-date?] [--limit=5] [--timeframe=1h]`  
-  Display performance details for a specific monitor
+## AI Skill
 
-#### Monitors
+Install the Oh Dear skill for AI coding assistants:
 
-- `ohdear monitor:add [url]`  
-  Add a new monitor to Oh Dear
-- `ohdear monitor:list`  
-  Display a list of monitors and their current status
-- `ohdear monitor:show [id]`  
-  Display details about a specific monitor
-
-#### Status Pages
-
-- `ohdear status-page:list`  
-  Display a list of status pages and their current status
-- `ohdear status-page:show [id]`  
-  Display details about a specific status page
-- `ohdear status-page-update:add [status-page-id] [title] [text] [--severity=info] [--pinned] [--time=]`  
-  Add a new update for a status page
-- `ohdear status-page-update:list [status-page-id]`  
-  Display updates for a status page
-- `ohdear status-page-update:delete [id]`  
-  Delete a status page update
-
-#### Uptime
-
-- `ohdear uptime:show [monitor-id] [start-date?] [end-date?] [--limit=10] [--timeframe=hour]`  
-  Display the uptime for a specific monitor
-- `ohdear downtime:show [monitor-id] [start-date?] [end-date?] [--limit=10]`  
-  Display the downtime for a specific monitor
+```shell
+ohdear install-skill
+```
 
 ## Contributing
 
 Thank you for considering contributing to Oh Dear CLI. All contributions are welcome via pull requests.
 
-You can have a look at the [CHANGELOG](CHANGELOG.md) for constant updates & detailed information about the changes.
+You can have a look at the [CHANGELOG](CHANGELOG.md) for constant updates and detailed information about the changes.
 
 ## License
 

@@ -1,48 +1,65 @@
 {
     "name": "ohdearapp/ohdear-cli",
-    "description": "An Oh Dear CLI tool written in PHP with Laravel Zero.",
-    "keywords": ["framework", "laravel", "console", "zero", "cli", "oh dear", "ohdear"],
+    "description": "A standalone CLI tool for Oh Dear monitoring.",
+    "keywords": ["ohdear", "cli", "monitoring", "uptime"],
+    "homepage": "https://ohdear.app",
     "type": "project",
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/nunomaduro/ohdear-cli/issues",
-        "source": "https://github.com/nunomaduro/ohdear-cli"
+        "issues": "https://github.com/ohdearapp/ohdear-cli/issues",
+        "source": "https://github.com/ohdearapp/ohdear-cli"
     },
     "authors": [
         {
-            "name": "Nuno Maduro",
-            "email": "enunomaduro@gmail.com"
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.2"
+        "php": "^8.4"
     },
     "require-dev": {
-        "illuminate/view": "^12.0",
-        "laravel-zero/framework": "^12.0",
-        "nunomaduro/termwind": "^2.0",
-        "ohdearapp/ohdear-php-sdk": "^4.2"
+        "illuminate/http": "^12.17",
+        "laravel-zero/framework": "^12.0.2",
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.25.1",
+        "mockery/mockery": "^1.6.12",
+        "pestphp/pest": "^3.8.4|^4.1.2",
+        "pestphp/pest-plugin-arch": "^3.0|^4.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "spatie/laravel-openapi-cli": "^1.0.2"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
-        },
-        "files": [
-            "app/helpers.php"
-        ]
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
     },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true,
-        "platform": {
-            "php": "8.2"
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
         }
     },
-    "scripts": {
-        "build": "php ohdear app:build"
-    },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "bin": ["builds/ohdear"]
 }

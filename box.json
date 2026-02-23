@@ -1,16 +1,18 @@
 {
+    "main": "ohdear",
+    "chmod": "0755",
     "directories": [
         "app",
         "bootstrap",
         "config",
-        "resources",
         "vendor"
     ],
     "files": [
         "composer.json"
     ],
-    "exclude-dev-files": false,
     "exclude-composer-files": false,
+    "exclude-dev-files": false,
+    "check-requirements": false,
     "compression": "GZ",
     "compactors": [
         "KevinGH\\Box\\Compactor\\Php",
