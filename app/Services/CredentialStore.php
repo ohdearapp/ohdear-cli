@@ -8,7 +8,7 @@ class CredentialStore
 
     public function __construct()
     {
-        if ($_SERVER['OHDEAR_CONFIG_PATH']) {
+        if (isset($_SERVER['OHDEAR_CONFIG_PATH'])) {
             $this->configPath = $_SERVER['OHDEAR_CONFIG_PATH'];
         } else {
             $home = $_SERVER['HOME'] ?? $_SERVER['USERPROFILE'] ?? '';
