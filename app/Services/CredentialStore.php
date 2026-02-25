@@ -8,9 +8,13 @@ class CredentialStore
 
     public function __construct()
     {
-        $home = $_SERVER['HOME'] ?? $_SERVER['USERPROFILE'] ?? '';
+        if (isset($_SERVER['OHDEAR_CONFIG_FILE_PATH'])) {
+            $this->configPath = $_SERVER['OHDEAR_CONFIG_FILE_PATH'];
+        } else {
+            $home = $_SERVER['HOME'] ?? $_SERVER['USERPROFILE'] ?? '';
 
-        $this->configPath = "{$home}/.ohdear/config.json";
+            $this->configPath = "{$home}/.ohdear/config.json";
+        }
     }
 
     public function getToken(): ?string
