@@ -23,6 +23,14 @@ it('shows INPUT section with input flags', function () {
         ->assertExitCode(0);
 });
 
+it('shows GLOBAL section with global flags', function () {
+    $this->artisan('help')
+        ->expectsOutputToContain('--version')
+        ->expectsOutputToContain('--quiet')
+        ->expectsOutputToContain('--no-ansi')
+        ->assertExitCode(0);
+});
+
 it('shows HELP section', function () {
     $this->artisan('help')
         ->expectsOutputToContain('help <command>')
