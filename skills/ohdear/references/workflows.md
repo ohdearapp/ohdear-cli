@@ -84,8 +84,8 @@ ohdear start-maintenance --monitor-id=<id>
 
 ```bash
 ohdear create-maintenance-period --monitor-id=<id> \
-  --field start_date="2025-06-01 02:00:00" \
-  --field end_date="2025-06-01 06:00:00"
+  --field start_date="2026-07-01 02:00:00" \
+  --field end_date="2026-07-01 06:00:00"
 ```
 
 ### 3. List current maintenance periods
