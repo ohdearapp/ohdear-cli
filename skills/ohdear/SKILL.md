@@ -35,16 +35,27 @@ ohdear logout  # Clear credentials
 
 If any command returns 401, run `ohdear login` again.
 
-## Discovering commands
+## Command naming
 
-```bash
-ohdear list              # List all available commands
-ohdear <command> --help  # Get help for a specific command
-```
+Commands use **kebab-case** names exactly as listed in [references/commands.md](references/commands.md). Do NOT guess command names — always look them up. Common mistakes to avoid:
+- ~~`sites:list`~~ → `list-monitors`
+- ~~`monitors:get`~~ → `get-monitor`
+- ~~`uptime:get`~~ → `get-uptime`
+
+**Always check [references/commands.md](references/commands.md) before running a command.** If unsure, run `ohdear <command> --help` to verify parameters.
 
 ## Output
 
-By default, commands output human-readable formatted text. Add `--json`, `--yaml`, or `--minify` for machine-readable output. Use `-H` to include response headers.
+Commands output human-readable text by default. For any task that requires **analysis, comparison, filtering, or counting**, always use `--json` to get structured output you can parse:
+
+```bash
+ohdear list-monitors --json           # Get all monitors as JSON
+ohdear get-uptime --monitor-id=1 --json  # Get uptime data as JSON
+```
+
+Other format options: `--yaml`, `--minify`. Use `-H` to include response headers.
+
+**Note:** `--json` works on API commands (list-*, get-*, etc.), not on utility commands (login, logout, clear-cache).
 
 When presenting results to the user, summarize clearly:
 - **Monitors**: Table with ID, URL, friendly name, status, checks enabled

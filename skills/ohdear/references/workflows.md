@@ -2,6 +2,40 @@
 
 Common workflows for managing website monitoring with the Oh Dear CLI.
 
+## Comparing monitors (slowest, fastest, most downtime, etc.)
+
+Answer questions like "which site is slowest?", "which has the most downtime?", or "compare performance across sites".
+
+### 1. Get all monitors as JSON
+
+```bash
+ohdear list-monitors --json
+```
+
+### 2. Get performance data per monitor
+
+For response time / speed comparisons, get uptime metrics for each monitor:
+
+```bash
+ohdear http-uptime-metrics --monitor-id=<id> --json
+```
+
+For downtime comparisons:
+
+```bash
+ohdear get-downtime --monitor-id=<id> --json
+```
+
+For Lighthouse performance scores:
+
+```bash
+ohdear get-latest-lighthouse-report --monitor-id=<id> --json
+```
+
+### 3. Compare and summarize
+
+Parse the JSON results to rank monitors by the relevant metric (response time, downtime duration, Lighthouse score, etc.) and present a summary table to the user.
+
 ## Monitor setup
 
 Set up monitoring for a new site.
