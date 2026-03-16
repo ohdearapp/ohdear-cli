@@ -4,6 +4,7 @@ namespace App\Commands;
 
 use App\Concerns\RendersBanner;
 use App\Services\CredentialStore;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use LaravelZero\Framework\Commands\Command;
 
@@ -32,7 +33,7 @@ class LoginCommand extends Command
 
         try {
             $response = Http::withToken($token)->get('https://ohdear.app/api/me');
-        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+        } catch (ConnectionException $e) {
             $this->error('Could not connect to Oh Dear. Please check your internet connection.');
 
             return self::FAILURE;

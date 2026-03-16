@@ -1,5 +1,8 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use Spatie\OpenApiCli\OpenApiCliServiceProvider;
+
 return [
 
     /*
@@ -54,8 +57,8 @@ return [
     */
 
     'providers' => [
-        App\Providers\AppServiceProvider::class,
-        Spatie\OpenApiCli\OpenApiCliServiceProvider::class,
+        AppServiceProvider::class,
+        OpenApiCliServiceProvider::class,
     ],
 
 ];
