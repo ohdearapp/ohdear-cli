@@ -128,7 +128,7 @@ ohdear list-tags                 # List all tags
 ohdear clear-cache               # Clear cached OpenAPI spec
 ```
 
-All commands output JSON. Run `ohdear <command> --help` for full parameter details.
+By default, commands output human-readable text. Add `--json` for JSON output. Run `ohdear <command> --help` for full parameter details.
 
 ## AI Skill
 

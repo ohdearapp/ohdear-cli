@@ -12,7 +12,7 @@ description: >-
 license: MIT
 metadata:
   author: ohdearapp
-  version: "5.0.0"
+  version: "5.1.3"
 ---
 
 # Oh Dear CLI
@@ -42,21 +42,11 @@ ohdear list              # List all available commands
 ohdear <command> --help  # Get help for a specific command
 ```
 
-Commands accept `--field key=value` for body params and `--option-name=value` for path/query params.
+## Output
 
-## Output format
+By default, commands output human-readable formatted text. Add `--json`, `--yaml`, or `--minify` for machine-readable output. Use `-H` to include response headers.
 
-By default, commands output human-readable formatted text. Use these flags to change the format:
-
-| Flag | Output |
-|------|--------|
-| *(default)* | Human-readable tables and lists |
-| `--json` | Pretty-printed JSON |
-| `--yaml` | YAML |
-| `--minify` | Compact JSON (no pretty-printing) |
-| `-H, --headers` | Include response headers |
-
-When presenting results to the user, summarize the human-readable output clearly:
+When presenting results to the user, summarize clearly:
 - **Monitors**: Table with ID, URL, friendly name, status, checks enabled
 - **Uptime**: Percentage uptime and downtime periods with start/end times
 - **Broken links**: URLs with HTTP status codes and source page
