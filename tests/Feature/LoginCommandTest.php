@@ -1,6 +1,7 @@
 <?php
 
 use App\Services\CredentialStore;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 
 beforeEach(function () {
@@ -59,7 +60,7 @@ it('shows error and does not store token on invalid token', function () {
 it('shows connection error on network failure', function () {
     Http::fake([
         'ohdear.app/api/me' => function () {
-            throw new \Illuminate\Http\Client\ConnectionException('Connection refused');
+            throw new ConnectionException('Connection refused');
         },
     ]);
 

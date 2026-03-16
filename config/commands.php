@@ -1,5 +1,19 @@
 <?php
 
+use Illuminate\Console\Scheduling\ScheduleFinishCommand;
+use Illuminate\Console\Scheduling\ScheduleListCommand;
+use Illuminate\Console\Scheduling\ScheduleRunCommand;
+use Illuminate\Foundation\Console\VendorPublishCommand;
+use LaravelZero\Framework\Commands\BuildCommand;
+use LaravelZero\Framework\Commands\InstallCommand;
+use LaravelZero\Framework\Commands\MakeCommand;
+use LaravelZero\Framework\Commands\RenameCommand;
+use LaravelZero\Framework\Commands\StubPublishCommand;
+use LaravelZero\Framework\Commands\TestMakeCommand;
+use NunoMaduro\LaravelConsoleSummary\SummaryCommand;
+use Symfony\Component\Console\Command\DumpCompletionCommand;
+use Symfony\Component\Console\Command\HelpCommand;
+
 return [
 
     /*
@@ -13,7 +27,7 @@ return [
     |
     */
 
-    'default' => NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
+    'default' => SummaryCommand::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -55,18 +69,18 @@ return [
     */
 
     'hidden' => [
-        NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
-        Symfony\Component\Console\Command\DumpCompletionCommand::class,
-        Illuminate\Console\Scheduling\ScheduleRunCommand::class,
-        Illuminate\Console\Scheduling\ScheduleListCommand::class,
-        Illuminate\Console\Scheduling\ScheduleFinishCommand::class,
-        Illuminate\Foundation\Console\VendorPublishCommand::class,
-        LaravelZero\Framework\Commands\StubPublishCommand::class,
-        LaravelZero\Framework\Commands\BuildCommand::class,
-        LaravelZero\Framework\Commands\RenameCommand::class,
-        LaravelZero\Framework\Commands\MakeCommand::class,
-        LaravelZero\Framework\Commands\InstallCommand::class,
-        LaravelZero\Framework\Commands\TestMakeCommand::class,
+        SummaryCommand::class,
+        DumpCompletionCommand::class,
+        ScheduleRunCommand::class,
+        ScheduleListCommand::class,
+        ScheduleFinishCommand::class,
+        VendorPublishCommand::class,
+        StubPublishCommand::class,
+        BuildCommand::class,
+        RenameCommand::class,
+        MakeCommand::class,
+        InstallCommand::class,
+        TestMakeCommand::class,
     ],
 
     /*
@@ -81,7 +95,7 @@ return [
     */
 
     'remove' => [
-        Symfony\Component\Console\Command\HelpCommand::class,
+        HelpCommand::class,
     ],
 
 ];
