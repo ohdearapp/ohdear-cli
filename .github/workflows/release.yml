@@ -6,8 +6,8 @@ on:
     - 'v*'
 
 jobs:
-  build:
-    name: Build PHAR
+  phar-release:
+    name: PHAR
     runs-on: ubuntu-latest
 
     if: github.repository == 'ohdearapp/ohdear-cli'
@@ -17,52 +17,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.4'
-        extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, intl, fileinfo
-        coverage: none
-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-interaction
-
-    - name: Build PHAR
-      run: php ohdear app:build ohdear --build-version="${GITHUB_REF_NAME#v}"
-
-    - name: Upload PHAR artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ohdear-phar
-        path: builds/ohdear
-
-  phar-release:
-    name: PHAR Release
-    runs-on: ubuntu-latest
-    needs: build
-
-    permissions:
-      contents: write
-
-    steps:
-
-    - name: Download PHAR artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: ohdear-phar
-
-    - name: Prepare PHAR for upload
-      run: mv ohdear ohdear.phar
+    - name: Prepare Phar for upload
+      run: |
+        mv builds/ohdear builds/ohdear.phar
 
     - name: Create GitHub Release
+      id: create_release
       uses: softprops/action-gh-release@v1
       with:
-        files: ohdear.phar
+        files: |
+          builds/ohdear.phar
 
   docker-release:
     name: Docker
     runs-on: ubuntu-latest
-    needs: build
 
     if: github.repository == 'ohdearapp/ohdear-cli'
 
@@ -74,12 +42,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Download PHAR artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ohdear-phar
-          path: builds
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -108,36 +70,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-  update-repo:
-    name: Commit PHAR to main
-    runs-on: ubuntu-latest
-    needs: build
-
-    permissions:
-      contents: write
-
-    steps:
-
-      - name: Checkout main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Download PHAR artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ohdear-phar
-          path: builds
-
-      - name: Commit updated PHAR
-        env:
-          TAG_NAME: ${{ github.ref_name }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          chmod +x builds/ohdear
-          git add builds/ohdear
-          git diff --staged --quiet && echo "No changes to commit" && exit 0
-          git commit -m "build: update PHAR for ${TAG_NAME}"
-          git push origin main
