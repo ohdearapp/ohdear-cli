@@ -66,6 +66,17 @@ When presenting results to the user, summarize clearly:
 - **Status pages**: Title, URL, associated monitors
 - **Lighthouse reports**: Performance, accessibility, best practices, SEO scores
 
+## Documentation
+
+Oh Dear docs are available in clean markdown for easy reading. Append `.md` to any docs URL or request with `Accept: text/markdown`:
+
+```
+https://ohdear.app/docs/general/introduction.md
+https://ohdear.app/docs/api/monitors.md
+```
+
+Use this to look up feature details, API parameters, or setup instructions when helping the user.
+
 ## Reference
 
 - **Full command list**: See [references/commands.md](references/commands.md)
