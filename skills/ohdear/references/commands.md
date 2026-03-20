@@ -13,7 +13,8 @@ Commands accept `--field key=value` for body params and `--option-name=value` fo
 | **Monitors** | `list-monitors`, `create-monitor`, `get-monitor`, `get-monitor-by-url`, `update-monitor`, `delete-monitor` | CRUD for monitors |
 | **Checks** | `get-check-summary`, `enable-check`, `disable-check`, `request-check-run`, `snooze-check`, `unsnooze-check` | Enable/disable/snooze individual checks on a monitor |
 | **Uptime & Downtime** | `get-uptime`, `get-downtime`, `delete-downtime`, `http-uptime-metrics`, `ping-uptime-metrics`, `tcp-uptime-metrics`, `get-public-metrics` | Uptime percentages, downtime periods, metrics by protocol |
-| **Broken Links** | `list-broken-links`, `add-broken-links-whitelist-url` | Find broken links, whitelist known URLs |
+| **Check History** | `list-check-runs` | List historical runs for any check type on a monitor (broken links, mixed content, etc.). Use run IDs to fetch results from a specific past run. |
+| **Broken Links** | `list-broken-links`, `add-broken-links-whitelist-url` | Find broken links (latest run by default, or pass `--run-id` for a historical run), whitelist known URLs |
 | **Mixed Content** | `list-mixed-content` | HTTP resources on HTTPS pages |
 | **Certificate Health** | `get-certificate-health`, `list-detected-certificates`, `get-detected-certificate` | SSL/TLS certificate monitoring |
 | **DNS & Domain** | `get-dns-history`, `get-dns-history-item`, `get-domain-info` | DNS records and domain registration info |

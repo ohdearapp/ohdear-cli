@@ -150,6 +150,8 @@ Find and fix broken links on your site.
 ohdear list-broken-links --monitor-id=<id>
 ```
 
+This returns results from the **latest completed run** by default.
+
 ### 2. Review the broken URLs and their status codes
 
 Look at the response. Each broken link shows the URL, the page it was found on, and the HTTP status code.
@@ -165,6 +167,54 @@ ohdear add-broken-links-whitelist-url --monitor-id=<id> --field url="https://exa
 ```bash
 ohdear list-mixed-content --monitor-id=<id>
 ```
+
+## Comparing historical check results
+
+Compare results across runs — e.g. "compare broken links from last week to this week", "did the mixed content issues get fixed?", or "show me the trend".
+
+Works for any check type that supports historical runs: `broken_links`, `mixed_content`, `certificate_health`, `sitemap`, etc.
+
+### 1. List historical runs for a check type
+
+```bash
+ohdear list-check-runs --monitor-id=<id> --check-type=broken_links --json
+```
+
+Each run has an `id`, `result` (succeeded/warning/failed), `started_at`, and `ended_at`. Runs are kept for approximately 10 days.
+
+Use filters to narrow down:
+
+```bash
+# Only runs from last week
+ohdear list-check-runs --monitor-id=<id> --check-type=broken_links \
+  --filter-started-after=20260313000000 --filter-started-before=20260320000000 --json
+
+# Only failed runs
+ohdear list-check-runs --monitor-id=<id> --check-type=broken_links --filter-result=failed --json
+```
+
+### 2. Fetch results from specific runs
+
+Use `--run-id` to get results from a specific historical run instead of the latest:
+
+```bash
+# Get broken links from a specific past run
+ohdear list-broken-links --monitor-id=<id> --run-id=98765 --json
+
+# Get broken links from another run to compare
+ohdear list-broken-links --monitor-id=<id> --run-id=98710 --json
+```
+
+The same `--run-id` parameter works on `list-mixed-content`, `get-certificate-health`, and `get-sitemap-results`.
+
+### 3. Compare and summarize
+
+Parse the JSON results from both runs and compare:
+- **New issues**: URLs broken in the newer run but not the older one
+- **Fixed issues**: URLs broken in the older run but not the newer one
+- **Persistent issues**: URLs broken in both runs
+
+Present a clear summary table showing what changed between the two runs.
 
 ## Certificate monitoring
 

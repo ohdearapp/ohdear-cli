@@ -72,7 +72,7 @@ Then filter monitors by `team_id`. Do NOT use `list-managed-teams` — that's a 
 When presenting results to the user, summarize clearly:
 - **Monitors**: Table with ID, URL, friendly name, status, checks enabled
 - **Uptime**: Percentage uptime and downtime periods with start/end times
-- **Broken links**: URLs with HTTP status codes and source page
+- **Broken links**: URLs with HTTP status codes and source page (use `--run-id` with historical run IDs to compare across runs — see workflows)
 - **Certificate health**: Issuer, expiration date, and issues found
 - **Cron checks**: Name, frequency, last ping time, status
 - **Status pages**: Title, URL, associated monitors
