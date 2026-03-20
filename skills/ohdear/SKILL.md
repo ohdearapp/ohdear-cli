@@ -57,6 +57,18 @@ Other format options: `--yaml`, `--minify`. Use `-H` to include response headers
 
 **Note:** `--json` works on API commands (list-*, get-*, etc.), not on utility commands (login, logout, clear-cache).
 
+**JSON structure:** `--json` responses are **paginated objects** `{data: [...], links: ...}`, not bare arrays. Always use `.data[]` to access items (e.g. `jq '.data[]'`), never `.[]`.
+
+## Teams
+
+API keys are user-scoped. A user may belong to multiple teams. Monitors have a `team_id` field but **no `team_name`**. To resolve team names to IDs:
+
+```bash
+ohdear get-me --json | jq '.teams[] | {id, name}'
+```
+
+Then filter monitors by `team_id`. Do NOT use `list-managed-teams` — that's a reseller-only endpoint.
+
 When presenting results to the user, summarize clearly:
 - **Monitors**: Table with ID, URL, friendly name, status, checks enabled
 - **Uptime**: Percentage uptime and downtime periods with start/end times
