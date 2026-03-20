@@ -2,7 +2,10 @@
 name: ohdear
 description: >-
   Manage Oh Dear website monitoring using the ohdear CLI.
-  Use when the user wants to check if their site is up, view uptime or downtime,
+  ALWAYS activate when the user's message contains an ohdear.app URL
+  (e.g. https://ohdear.app/monitors/123/check/broken-links/report). Extract the
+  monitor ID and check type from the URL and use the CLI to fetch the data.
+  Also use when the user wants to check if their site is up, view uptime or downtime,
   list or manage monitors, view broken links, mixed content, or certificate health,
   manage maintenance periods or status pages, configure cron checks, view DNS
   history or DNS blocklists, check port scan results, view sitemap checks,
