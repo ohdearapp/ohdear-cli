@@ -9,13 +9,13 @@ description: >-
   list or manage monitors, view broken links, mixed content, or certificate health,
   manage maintenance periods or status pages, configure cron checks, view DNS
   history or DNS blocklists, check port scan results, view sitemap checks,
-  check application health, view Lighthouse performance reports, manage tags,
-  manage notification destinations, manage teams, or interact with ohdear.app
-  in any way.
+  check application health, view Lighthouse performance reports, view crawled
+  URLs summary and details, manage tags, manage notification destinations,
+  manage teams, or interact with ohdear.app in any way.
 license: MIT
 metadata:
   author: ohdearapp
-  version: "5.1.3"
+  version: "5.2.0"
 ---
 
 # Oh Dear CLI
@@ -76,6 +76,7 @@ When presenting results to the user, summarize clearly:
 - **Monitors**: Table with ID, URL, friendly name, status, checks enabled
 - **Uptime**: Percentage uptime and downtime periods with start/end times
 - **Broken links**: URLs with HTTP status codes and source page (use `--run-id` with historical run IDs to compare across runs — see workflows)
+- **Crawled URLs**: Always start with `get-crawled-urls-summary` (tiny payload: totals + by-type breakdown). Only use `list-crawled-urls-details` with `jq` filters — it returns 100 items/page and can be very large. Never dump raw details into context.
 - **Certificate health**: Issuer, expiration date, and issues found
 - **Cron checks**: Name, frequency, last ping time, status
 - **Status pages**: Title, URL, associated monitors

@@ -216,6 +216,74 @@ Parse the JSON results from both runs and compare:
 
 Present a clear summary table showing what changed between the two runs.
 
+## Crawled URLs investigation
+
+Investigate what URLs Oh Dear's crawler found on a site — useful for understanding site structure, finding non-200 responses, or analyzing URL types.
+
+**Important:** The details endpoint returns up to 100 items per page and can contain 1000+ URLs. Always start with the summary to understand the scope, then use `jq` to filter details rather than reading raw JSON.
+
+### 1. Get the summary first
+
+```bash
+ohdear get-crawled-urls-summary --monitor-id=<id> --json
+```
+
+This returns a small payload with totals and breakdown by type:
+
+```json
+{
+  "data": {
+    "total": 1042,
+    "internal": 1042,
+    "external": 0,
+    "by_type": { "image": 622, "link": 355, "og:image": 46, "script": 13, "stylesheet": 6 }
+  },
+  "meta": { "run_id": 12345, "run_started_at": "...", "run_ended_at": "..." }
+}
+```
+
+### 2. Filter details with jq — never dump raw
+
+The details endpoint is paginated (100/page). Always pipe through `jq` to extract only what you need:
+
+```bash
+# Count non-200 status codes
+ohdear list-crawled-urls-details --monitor-id=<id> --json | jq '[.data[] | select(.status_code != 200)] | length'
+
+# List only broken URLs (4xx/5xx)
+ohdear list-crawled-urls-details --monitor-id=<id> --json | jq '.data[] | select(.status_code >= 400) | {status_code, crawled_url, found_on_url}'
+
+# List only external URLs
+ohdear list-crawled-urls-details --monitor-id=<id> --json | jq '.data[] | select(.internal == false) | {crawled_url, status_code}'
+
+# Filter by type (link, image, script, stylesheet, og:image)
+ohdear list-crawled-urls-details --monitor-id=<id> --json | jq '.data[] | select(.type == "link") | {crawled_url, status_code}'
+
+# Get URLs with errors
+ohdear list-crawled-urls-details --monitor-id=<id> --json | jq '.data[] | select(.error_message != null) | {crawled_url, error_message}'
+```
+
+### 3. Paginate for large sites
+
+If the summary shows more than 100 URLs, use `--page` to fetch subsequent pages:
+
+```bash
+ohdear list-crawled-urls-details --monitor-id=<id> --page=2 --json | jq '.data[] | select(.status_code >= 400)'
+```
+
+### 4. Compare across runs
+
+Both endpoints support `--run-id` to fetch results from a historical run:
+
+```bash
+# Get historical run IDs
+ohdear list-check-runs --monitor-id=<id> --check-type=broken_links --json
+
+# Compare summary between two runs
+ohdear get-crawled-urls-summary --monitor-id=<id> --run-id=<old_run_id> --json
+ohdear get-crawled-urls-summary --monitor-id=<id> --run-id=<new_run_id> --json
+```
+
 ## Certificate monitoring
 
 Monitor SSL/TLS certificates to prevent expiration issues.

@@ -15,6 +15,7 @@ Commands accept `--field key=value` for body params and `--option-name=value` fo
 | **Uptime & Downtime** | `get-uptime`, `get-downtime`, `delete-downtime`, `http-uptime-metrics`, `ping-uptime-metrics`, `tcp-uptime-metrics`, `get-public-metrics` | Uptime percentages, downtime periods, metrics by protocol |
 | **Check History** | `list-check-runs` | List historical runs for any check type on a monitor (broken links, mixed content, etc.). Use run IDs to fetch results from a specific past run. |
 | **Broken Links** | `list-broken-links`, `add-broken-links-whitelist-url` | Find broken links (latest run by default, or pass `--run-id` for a historical run), whitelist known URLs |
+| **Crawled URLs** | `get-crawled-urls-summary`, `list-crawled-urls-details` | Summary counts (total/internal/external/by-type) and per-URL details (status code, found-on page, type). **Always start with summary** — details is paginated (100/page) and can be very large. |
 | **Mixed Content** | `list-mixed-content` | HTTP resources on HTTPS pages |
 | **Certificate Health** | `get-certificate-health`, `list-detected-certificates`, `get-detected-certificate` | SSL/TLS certificate monitoring |
 | **DNS & Domain** | `get-dns-history`, `get-dns-history-item`, `get-domain-info` | DNS records and domain registration info |
