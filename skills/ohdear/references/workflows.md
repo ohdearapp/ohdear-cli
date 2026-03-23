@@ -117,7 +117,8 @@ ohdear start-maintenance --monitor-id=<id>
 ### 2. Or schedule a future maintenance window
 
 ```bash
-ohdear create-maintenance-period --monitor-id=<id> \
+ohdear create-maintenance-period \
+  --field monitor_id=<id> \
   --field start_date="2026-07-01 02:00:00" \
   --field end_date="2026-07-01 06:00:00"
 ```
@@ -325,7 +326,8 @@ ohdear add-status-page-monitors --status-page-id=<id> --field monitor_ids="[1,2,
 ### 3. Post an incident update
 
 ```bash
-ohdear create-status-page-update --status-page-id=<id> \
+ohdear create-status-page-update \
+  --field status_page_id=<id> \
   --field title="Investigating connectivity issues" \
   --field text="We are investigating reports of intermittent connectivity issues." \
   --field severity="warning"
