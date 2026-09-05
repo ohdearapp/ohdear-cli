@@ -20,17 +20,16 @@
         "php": "^8.4"
     },
     "require-dev": {
-        "illuminate/http": "^12.17",
-        "laravel-zero/framework": "^12.0.2",
-        "larastan/larastan": "^3.0",
-        "laravel/pint": "^1.25.1",
-        "mockery/mockery": "^1.6.12",
-        "pestphp/pest": "^3.8.4|^4.1.2",
-        "pestphp/pest-plugin-arch": "^3.0|^4.0",
+        "illuminate/http": "^13.23",
+        "laravel-zero/framework": "^13.0",
+        "larastan/larastan": "^3.11",
+        "laravel/pint": "^1.30",
+        "mockery/mockery": "^1.6",
+        "pestphp/pest": "^5.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
-        "spatie/laravel-openapi-cli": "^1.0.2"
+        "spatie/laravel-openapi-cli": "^1.5"
     },
     "autoload": {
         "psr-4": {
