@@ -67,3 +67,27 @@ it('writes pretty-printed JSON', function () {
     expect($contents)->toContain("\n");
     expect(json_decode($contents, true))->toBe(['token' => 'test-token']);
 });
+
+it('creates the config file readable only by the owner', function () {
+    $this->store->setToken('test-token');
+
+    expect(fileperms($this->tempDir.'/.ohdear/config.json') & 0777)->toBe(0600);
+    expect(fileperms($this->tempDir.'/.ohdear') & 0777)->toBe(0700);
+})->skipOnWindows();
+
+it('restricts permissions of an existing config file', function () {
+    $configFile = $this->tempDir.'/.ohdear/config.json';
+    mkdir(dirname($configFile), 0755);
+    file_put_contents($configFile, json_encode(['token' => 'old-token']));
+    chmod($configFile, 0644);
+
+    $this->store->setToken('new-token');
+
+    expect(fileperms($configFile) & 0777)->toBe(0600);
+})->skipOnWindows();
+
+it('keeps the config file readable only by the owner after flushing', function () {
+    $this->store->flush();
+
+    expect(fileperms($this->tempDir.'/.ohdear/config.json') & 0777)->toBe(0600);
+})->skipOnWindows();

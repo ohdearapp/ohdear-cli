@@ -35,20 +35,14 @@ class CredentialStore
         $data = $this->readConfig();
         $data['token'] = $token;
 
-        file_put_contents(
-            $this->configPath,
-            json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
-        );
+        $this->writeConfig(json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     }
 
     public function flush(): void
     {
         $this->ensureConfigDirectoryExists();
 
-        file_put_contents(
-            $this->configPath,
-            json_encode((object) [], JSON_PRETTY_PRINT),
-        );
+        $this->writeConfig(json_encode((object) [], JSON_PRETTY_PRINT));
     }
 
     private function ensureConfigDirectoryExists(): void
@@ -56,8 +50,17 @@ class CredentialStore
         $directory = dirname($this->configPath);
 
         if (! is_dir($directory)) {
-            mkdir($directory, 0755, true);
+            mkdir($directory, 0700, true);
         }
+    }
+
+    private function writeConfig(string $contents): void
+    {
+        // Restrict permissions before writing so the token is never readable by other users.
+        touch($this->configPath);
+        chmod($this->configPath, 0600);
+
+        file_put_contents($this->configPath, $contents, LOCK_EX);
     }
 
     /** @return array<string, mixed> */
