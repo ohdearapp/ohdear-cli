@@ -6,8 +6,8 @@ on:
     - 'v*'
 
 jobs:
-  phar-release:
-    name: PHAR
+  build:
+    name: Build PHAR
     runs-on: ubuntu-latest
 
     if: github.repository == 'ohdearapp/ohdear-cli'
@@ -16,6 +16,45 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.4
+        extensions: zlib
+        coverage: none
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-interaction
+
+    - name: Build PHAR
+      run: php ohdear app:build ohdear --build-version="${GITHUB_REF_NAME#v}" --no-interaction
+
+    - name: Verify PHAR version
+      run: |
+        php builds/ohdear --version | tee /dev/stderr | grep -qF "${GITHUB_REF_NAME#v}"
+
+    - name: Upload PHAR
+      uses: actions/upload-artifact@v4
+      with:
+        name: ohdear-phar
+        path: builds/ohdear
+        if-no-files-found: error
+
+  phar-release:
+    name: PHAR
+    runs-on: ubuntu-latest
+    needs: build
+
+    if: github.repository == 'ohdearapp/ohdear-cli'
+
+    steps:
+
+    - name: Download PHAR
+      uses: actions/download-artifact@v4
+      with:
+        name: ohdear-phar
+        path: builds
 
     - name: Prepare Phar for upload
       run: |
@@ -31,6 +70,7 @@ jobs:
   docker-release:
     name: Docker
     runs-on: ubuntu-latest
+    needs: build
 
     if: github.repository == 'ohdearapp/ohdear-cli'
 
@@ -42,6 +82,16 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download PHAR
+        uses: actions/download-artifact@v4
+        with:
+          name: ohdear-phar
+          path: builds
+
+      # Artifacts don't keep file modes, and the image runs /ohdear directly.
+      - name: Make PHAR executable
+        run: chmod +x builds/ohdear
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
