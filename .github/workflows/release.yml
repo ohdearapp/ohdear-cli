@@ -33,7 +33,7 @@ jobs:
         actual="$(php builds/ohdear --version --no-ansi)"
         echo "$actual"
         if [[ "$actual" != "$expected" ]]; then
-          echo "::error file=builds/ohdear::The committed builds/ohdear reports '$actual', not '$expected'. Composer users get the committed file. Rebuild it with 'php ohdear app:build ohdear --build-version=${GITHUB_REF_NAME#v}', commit it, and push a new tag."
+          echo "::error file=builds/ohdear::The committed builds/ohdear reports '$actual', not '$expected'. Composer users get the committed file. Rebuild it with 'php ohdear app:build ohdear --build-version=<next version>', commit it, and tag that commit."
           exit 1
         fi
 
