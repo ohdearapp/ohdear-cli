@@ -31,8 +31,11 @@ jobs:
       run: php ohdear app:build ohdear --build-version="${GITHUB_REF_NAME#v}" --no-interaction
 
     - name: Verify PHAR version
+      shell: bash
       run: |
-        php builds/ohdear --version | tee /dev/stderr | grep -qF "${GITHUB_REF_NAME#v}"
+        actual="$(php builds/ohdear --version --no-ansi)"
+        echo "$actual"
+        [[ "$actual" == "Oh Dear ${GITHUB_REF_NAME#v}" ]]
 
     - name: Upload PHAR
       uses: actions/upload-artifact@v4
