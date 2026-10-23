@@ -5,9 +5,12 @@ on:
     tags:
     - 'v*'
 
+permissions:
+  contents: read
+
 jobs:
-  phar-release:
-    name: PHAR
+  build:
+    name: Build PHAR
     runs-on: ubuntu-latest
 
     if: github.repository == 'ohdearapp/ohdear-cli'
@@ -17,20 +20,80 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.4
+        extensions: zlib
+        coverage: none
+
+    # Composer installs run the committed builds/ohdear, not the phar built below.
+    # A stale committed phar would ship an old version to Composer users.
+    - name: Verify committed PHAR version
+      shell: bash
+      run: |
+        expected="Oh Dear ${GITHUB_REF_NAME#v}"
+        actual="$(php builds/ohdear --version --no-ansi)"
+        echo "$actual"
+        if [[ "$actual" != "$expected" ]]; then
+          echo "::error file=builds/ohdear::The committed builds/ohdear reports '$actual', not '$expected'. Composer users get the committed file. Rebuild it with 'php ohdear app:build ohdear --build-version=<next version>', commit it, and tag that commit."
+          exit 1
+        fi
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-interaction
+
+    - name: Build PHAR
+      run: php ohdear app:build ohdear --build-version="${GITHUB_REF_NAME#v}" --no-interaction
+
+    - name: Verify PHAR version
+      shell: bash
+      run: |
+        actual="$(php builds/ohdear --version --no-ansi)"
+        echo "$actual"
+        [[ "$actual" == "Oh Dear ${GITHUB_REF_NAME#v}" ]]
+
+    - name: Upload PHAR
+      uses: actions/upload-artifact@v7
+      with:
+        name: ohdear-phar
+        path: builds/ohdear
+        if-no-files-found: error
+
+  phar-release:
+    name: PHAR
+    runs-on: ubuntu-latest
+    needs: build
+
+    if: github.repository == 'ohdearapp/ohdear-cli'
+
+    permissions:
+      contents: write
+
+    steps:
+
+    - name: Download PHAR
+      uses: actions/download-artifact@v8
+      with:
+        name: ohdear-phar
+        path: builds
+
     - name: Prepare Phar for upload
       run: |
         mv builds/ohdear builds/ohdear.phar
 
     - name: Create GitHub Release
       id: create_release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v3
       with:
+        prerelease: ${{ contains(github.ref_name, '-') }}
         files: |
           builds/ohdear.phar
 
   docker-release:
     name: Docker
     runs-on: ubuntu-latest
+    needs: build
 
     if: github.repository == 'ohdearapp/ohdear-cli'
 
@@ -42,6 +105,16 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download PHAR
+        uses: actions/download-artifact@v8
+        with:
+          name: ohdear-phar
+          path: builds
+
+      # Artifacts don't keep file modes, and the image runs /ohdear directly.
+      - name: Make PHAR executable
+        run: chmod +x builds/ohdear
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
