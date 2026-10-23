@@ -5,6 +5,9 @@ on:
     tags:
     - 'v*'
 
+permissions:
+  contents: read
+
 jobs:
   build:
     name: Build PHAR
@@ -63,6 +66,9 @@ jobs:
     needs: build
 
     if: github.repository == 'ohdearapp/ohdear-cli'
+
+    permissions:
+      contents: write
 
     steps:
 
