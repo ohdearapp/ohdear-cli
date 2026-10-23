@@ -24,6 +24,19 @@ jobs:
         extensions: zlib
         coverage: none
 
+    # Composer installs run the committed builds/ohdear, not the phar built below.
+    # A stale committed phar would ship an old version to Composer users.
+    - name: Verify committed PHAR version
+      shell: bash
+      run: |
+        expected="Oh Dear ${GITHUB_REF_NAME#v}"
+        actual="$(php builds/ohdear --version --no-ansi)"
+        echo "$actual"
+        if [[ "$actual" != "$expected" ]]; then
+          echo "::error file=builds/ohdear::The committed builds/ohdear reports '$actual', not '$expected'. Composer users get the committed file. Rebuild it with 'php ohdear app:build ohdear --build-version=${GITHUB_REF_NAME#v}', commit it, and push a new tag."
+          exit 1
+        fi
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-interaction
 
