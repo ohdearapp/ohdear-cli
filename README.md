@@ -30,7 +30,7 @@ composer global config bin-dir --absolute
 
 ## Authentication
 
-First, log in with your Oh Dear API token. You can generate one at [ohdear.app/user-settings/api](https://ohdear.app/user-settings/api).
+First, log in with your Oh Dear API token. You can generate one at [ohdear.app/user/api-tokens](https://ohdear.app/user/api-tokens).
 
 ```shell
 ohdear login
