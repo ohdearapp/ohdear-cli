@@ -32,7 +32,7 @@ composer global require ohdearapp/ohdear-cli  # Install if needed
 ## Authentication
 
 ```bash
-ohdear login   # Prompted for API token (get it at https://ohdear.app/user-settings/api)
+ohdear login   # Prompted for API token (get it at https://ohdear.app/user/api-tokens)
 ohdear logout  # Clear credentials
 ```
 
