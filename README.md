@@ -14,7 +14,7 @@ Oh Dear CLI is a command line tool to manage [Oh Dear](https://ohdear.app) websi
 
 ## Install
 
-> **Requires [PHP 8.4+](https://php.net/releases)**
+> **Requires [PHP 8.4.1+](https://php.net/releases)**
 
 Via Composer
 

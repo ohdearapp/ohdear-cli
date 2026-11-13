@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": "^8.4"
+        "php": "^8.4.1"
     },
     "require-dev": {
         "illuminate/http": "^13.23",
