@@ -35,3 +35,50 @@ jobs:
 
       - name: Run tests
         run: vendor/bin/pest
+
+  phar:
+    name: Build and test PHAR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: zlib
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Build PHAR
+        run: php -d phar.readonly=0 ohdear app:build ohdear --build-version=0.0.0-test --no-interaction
+
+      - name: Test standalone PHAR
+        shell: bash
+        run: |
+          cp builds/ohdear "$RUNNER_TEMP/ohdear.phar"
+          cd "$RUNNER_TEMP"
+          [[ "$(php ohdear.phar --version --no-ansi)" == 'Oh Dear 0.0.0-test' ]]
+          php ohdear.phar help --no-ansi | grep -F 'list-monitors'
+          php ohdear.phar list-monitors --help --no-ansi
+
+      - name: Check PHAR contents
+        run: |
+          php <<'PHP'
+          <?php
+          $phar = new Phar(getenv('RUNNER_TEMP').'/ohdear.phar');
+
+          foreach (new RecursiveIteratorIterator($phar) as $file) {
+              $path = $file->getPathname();
+
+              if (preg_match('#/vendor/(brianium/|larastan/|laravel/pint/|laravel-zero/framework/bin/|phpstan/phpstan/(?!bootstrap\.php$))#', $path)) {
+                  throw new RuntimeException("Development tooling bundled: {$path}");
+              }
+          }
+
+          printf("PHAR size: %d bytes\n", filesize(getenv('RUNNER_TEMP').'/ohdear.phar'));
+          PHP

@@ -4,11 +4,23 @@
     "directories": [
         "app",
         "bootstrap",
-        "config",
-        "vendor"
+        "config"
     ],
     "files": [
-        "composer.json"
+        "composer.json",
+        "vendor/phpstan/phpstan/bootstrap.php"
+    ],
+    "finder": [
+        {
+            "in": "vendor",
+            "exclude": [
+                "brianium",
+                "larastan",
+                "laravel/pint",
+                "laravel-zero/framework/bin",
+                "phpstan/phpstan"
+            ]
+        }
     ],
     "exclude-composer-files": false,
     "exclude-dev-files": false,
